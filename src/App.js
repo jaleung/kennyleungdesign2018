@@ -3,7 +3,7 @@ import "./App.css";
 import Axios from "axios";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-const globalUrl = "https://35.189.186.209/";
+const baseUrl = "https://35.189.186.209/";
 
 const urlMask = url => {
   return url.replace("storage.googleapis.com/", "");
@@ -42,7 +42,7 @@ class PortfolioItem extends Component {
   getPortfolio() {
     this.setState({});
     let currentPortfo = this.props.match.params.portfoTitle;
-    Axios.get(`${globalUrl}/portfolio/${currentPortfo}?_format=json`).then(
+    Axios.get(`${baseUrl}/portfolio/${currentPortfo}?_format=json`).then(
       resp => {
         this.setState({
           title: resp.data[0].title,
@@ -70,7 +70,7 @@ class App extends Component {
     cards: []
   };
   componentDidMount() {
-    Axios.get(`${globalUrl}/portfolios?_format=json`).then(resp => {
+    Axios.get(`${baseUrl}/portfolios?_format=json`).then(resp => {
       this.setState(prevState => ({
         cards: prevState.cards.concat(resp.data)
       }));
