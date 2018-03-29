@@ -6,10 +6,45 @@ import { baseUrl, urlMask, portfoUrl } from "./components/global.jsx";
 import Login from "./components/login.jsx";
 import Logout from "./components/logout.jsx";
 
-const CardList = props => {
+class CardList extends Component {
+  state = {
+    cards: [],
+  };
+  getPortfolios() {
+    this.setState({
+      cards: []
+    })
+    let auth = localStorage.getItem("auth");
+    if (auth != null) {
+    Axios.get(`${baseUrl}/portfolios?_format=json`, {
+      headers: { Authorization: "Basic " + auth }
+    }).then(resp => {
+      this.setState({
+        cards: resp.data
+      });
+    });
+    } else {
+    Axios.get(`${baseUrl}/portfolios?_format=json`).then(resp => {
+      this.setState({
+        cards: resp.data
+      });
+    });
+    }
+  }
+
+  componentDidMount() {
+    this.getPortfolios();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.getPortfolios();
+  }
+
+  render() {
   return (
-    <div>{props.cards.map(card => <Card key={card.uuid} {...card} />)}</div>
+    <div>{this.state.cards.map(card => <Card key={card.uuid} {...card} />)}</div>
   );
+  }
 };
 
 const Card = props => {
@@ -75,27 +110,7 @@ class PortfolioItem extends Component {
   }
 }
 class App extends Component {
-  state = {
-    cards: []
-  };
-  componentDidMount() {
-    let auth = localStorage.getItem("auth");
-    if (auth != null) {
-    Axios.get(`${baseUrl}/portfolios?_format=json`, {
-      headers: { Authorization: "Basic " + auth }
-    }).then(resp => {
-      this.setState(prevState => ({
-        cards: prevState.cards.concat(resp.data)
-      }));
-    });
-    } else {
-    Axios.get(`${baseUrl}/portfolios?_format=json`).then(resp => {
-      this.setState(prevState => ({
-        cards: prevState.cards.concat(resp.data)
-      }));
-    });
-    }
-  }
+
 
   renderUserLink() {
     var loggedIn = localStorage.getItem("auth");
@@ -110,10 +125,6 @@ class App extends Component {
     }
   }
 
-  reloadPage() {
-    this.forceUpdate();
-  }
-
   render() {
     return (
       <Router>
@@ -121,10 +132,10 @@ class App extends Component {
           <div className="login_card">
             {this.renderUserLink()}
           </div>
-          <CardList cards={this.state.cards} />
+          <Route path="/" component={CardList} />
           <Route path={`/portfolio/:portfoTitle`} component={PortfolioItem} />
           <Route path="/logout" component={Logout} />
-          <Route path="/login" component={Login} onSubmit={this.reloadPage}/>
+          <Route path="/login" component={Login} />
         </div>
       </Router>
     );
