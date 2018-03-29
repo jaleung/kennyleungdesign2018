@@ -2,16 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import Axios from "axios";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
-const baseUrl = "https://35.189.186.209/";
-
-const urlMask = url => {
-  return url.replace("storage.googleapis.com/", "");
-};
-
-const portfoUrl = url => {
-  return url.toLowerCase().replace(/ /g, "-");
-};
+import { baseUrl, urlMask, portfoUrl } from "./components/global.jsx";
+import Login from "./components/login.jsx";
 
 const CardList = props => {
   return (
@@ -41,15 +33,31 @@ class PortfolioItem extends Component {
 
   getPortfolio() {
     this.setState({});
+    let auth = localStorage.getItem("auth");
     let currentPortfo = this.props.match.params.portfoTitle;
-    Axios.get(`${baseUrl}/portfolio/${currentPortfo}?_format=json`).then(
-      resp => {
-        this.setState({
-          title: resp.data[0].title,
-          body: resp.data[0].body
-        });
-      }
-    );
+    if (auth != null) {
+      Axios.get(`${baseUrl}/portfolio/${currentPortfo}?_format=json`, {
+        headers: { Authorization: "Basic " + auth }
+      }).then(
+        resp => {
+          console.log(resp)
+          this.setState({
+            title: resp.data[0].title,
+            body: resp.data[0].body
+          });
+        }
+      );
+    } else {
+      Axios.get(`${baseUrl}/portfolio/${currentPortfo}?_format=json`,).then(
+        resp => {
+          console.log(resp)
+          this.setState({
+            title: resp.data[0].title,
+            body: resp.data[0].body
+          });
+        }
+      );
+    }
   }
 
   componentDidMount() {
@@ -70,16 +78,28 @@ class App extends Component {
     cards: []
   };
   componentDidMount() {
+    let auth = localStorage.getItem("auth");
+    if (auth != null) {
+    Axios.get(`${baseUrl}/portfolios?_format=json`, {
+      headers: { Authorization: "Basic " + auth }
+    }).then(resp => {
+      this.setState(prevState => ({
+        cards: prevState.cards.concat(resp.data)
+      }));
+    });
+    } else {
     Axios.get(`${baseUrl}/portfolios?_format=json`).then(resp => {
       this.setState(prevState => ({
         cards: prevState.cards.concat(resp.data)
       }));
     });
+    }
   }
   render() {
     return (
       <Router>
         <div className="App">
+          <Login />
           <CardList cards={this.state.cards} />
           <Route path={`/portfolio/:portfoTitle`} component={PortfolioItem} />
         </div>
