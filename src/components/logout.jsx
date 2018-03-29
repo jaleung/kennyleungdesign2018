@@ -6,7 +6,8 @@ import {
 
 class Logout extends Component {
 
-  componentWillMount() {
+  constructor(props) {
+    super(props);
     localStorage.removeItem('username');
     localStorage.removeItem('uid');
     localStorage.removeItem('csrf_token');

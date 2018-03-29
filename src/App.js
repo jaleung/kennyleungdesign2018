@@ -9,11 +9,9 @@ import Logout from "./components/logout.jsx";
 class CardList extends Component {
   state = {
     cards: [],
+    isLogged: localStorage.getItem("auth")
   };
   getPortfolios() {
-    this.setState({
-      cards: []
-    })
     let auth = localStorage.getItem("auth");
     if (auth != null) {
     Axios.get(`${baseUrl}/portfolios?_format=json`, {
@@ -37,7 +35,9 @@ class CardList extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.getPortfolios();
+    if (localStorage.getItem !== this.state.isLogged) {
+    this.forceUpdate(this.getPortfolios);
+    }
   }
 
   render() {
