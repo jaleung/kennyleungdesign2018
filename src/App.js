@@ -4,6 +4,7 @@ import Axios from "axios";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { baseUrl, urlMask, portfoUrl } from "./components/global.jsx";
 import Login from "./components/login.jsx";
+import Logout from "./components/logout.jsx";
 
 const CardList = props => {
   return (
@@ -95,13 +96,35 @@ class App extends Component {
     });
     }
   }
+
+  renderUserLink() {
+    var loggedIn = localStorage.getItem("auth");
+    if (loggedIn) {
+      return (
+        <Link to="/logout">Logout</Link>
+      )
+    } else {
+      return (
+        <Link to="/login">Login</Link>
+      )
+    }
+  }
+
+  reloadPage() {
+    this.forceUpdate();
+  }
+
   render() {
     return (
       <Router>
         <div className="App">
-          <Login />
+          <div className="login_card">
+            {this.renderUserLink()}
+          </div>
           <CardList cards={this.state.cards} />
           <Route path={`/portfolio/:portfoTitle`} component={PortfolioItem} />
+          <Route path="/logout" component={Logout} />
+          <Route path="/login" component={Login} onSubmit={this.reloadPage}/>
         </div>
       </Router>
     );

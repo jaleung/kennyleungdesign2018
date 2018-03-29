@@ -17,7 +17,7 @@ class Login extends Component {
       password: '',
       success: '',
       error: '',
-      redirect: false
+      redirect: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -55,7 +55,8 @@ class Login extends Component {
       localStorage.setItem('auth', window.btoa(self.state.name + ':' + self.state.password));
 
       self.setState({redirect: true});
-    })
+      self.forceUpdate();
+   })
     .catch(function (error) {
       var errorResponse = error.response.data.message;
       errorResponse = errorResponse.replace(/(?:\r\n|\r|\n)/g, '<br />');
