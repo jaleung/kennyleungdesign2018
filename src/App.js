@@ -64,6 +64,28 @@ const Card = props => {
   );
 };
 
+class AuthBtn extends Component {
+  // state = {
+  //   isLogged: localStorage.getItem("auth")
+  // };
+
+  componentWillReceiveProps(nextProps) {
+    this.forceUpdate(this.render())
+  }
+  render() {
+    var loggedIn = localStorage.getItem("auth");
+    if (loggedIn) {
+      return (
+        <Link to="/logout">Logout</Link>
+      )
+    } else {
+      return (
+        <Link to="/login">Login</Link>
+      )
+    }
+  }
+}
+
 class PortfolioItem extends Component {
   state = {};
 
@@ -111,27 +133,11 @@ class PortfolioItem extends Component {
 }
 class App extends Component {
 
-
-  renderUserLink() {
-    var loggedIn = localStorage.getItem("auth");
-    if (loggedIn) {
-      return (
-        <Link to="/logout">Logout</Link>
-      )
-    } else {
-      return (
-        <Link to="/login">Login</Link>
-      )
-    }
-  }
-
   render() {
     return (
       <Router>
         <div className="App">
-          <div className="login_card">
-            {this.renderUserLink()}
-          </div>
+          <AuthBtn />
           <Route path="/" component={CardList} />
           <Route path={`/portfolio/:portfoTitle`} component={PortfolioItem} />
           <Route path="/logout" component={Logout} />
