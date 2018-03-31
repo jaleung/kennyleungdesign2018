@@ -34,7 +34,7 @@ class CardList extends Component {
     this.getPortfolios();
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps() {
     if (localStorage.getItem !== this.state.isLogged) {
     this.forceUpdate(this.getPortfolios);
     }
@@ -69,7 +69,7 @@ class AuthBtn extends Component {
   //   isLogged: localStorage.getItem("auth")
   // };
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps() {
     this.forceUpdate(this.render())
   }
   render() {
