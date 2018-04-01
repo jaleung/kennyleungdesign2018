@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { baseUrl, urlMask, portfoUrl } from "./components/global.jsx";
 import Login from "./components/login.jsx";
 import Logout from "./components/logout.jsx";
+import AppBar from "material-ui/AppBar";
 
 class CardList extends Component {
   state = {
@@ -137,6 +138,9 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+          <AppBar title="Kenny Leung UI/UX Developer">
+            <Link to="/login">Login</Link>
+          </AppBar>
           <AuthBtn />
           <Route path="/" component={CardList} />
           <Route path={`/portfolio/:portfoTitle`} component={PortfolioItem} />
