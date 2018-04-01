@@ -5,7 +5,10 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { baseUrl, urlMask, portfoUrl } from "./components/global.jsx";
 import Login from "./components/login.jsx";
 import Logout from "./components/logout.jsx";
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from "material-ui/AppBar";
+import Toolbar from "material-ui/Toolbar";
+import Typography from "material-ui/Typography";
 
 class CardList extends Component {
   state = {
@@ -135,20 +138,25 @@ class PortfolioItem extends Component {
 class App extends Component {
 
   render() {
-    return (
-      <Router>
-        <div className="App">
-          <AppBar title="Kenny Leung UI/UX Developer">
-            <Link to="/login">Login</Link>
-          </AppBar>
-          <AuthBtn />
-          <Route path="/" component={CardList} />
-          <Route path={`/portfolio/:portfoTitle`} component={PortfolioItem} />
-          <Route path="/logout" component={Logout} />
-          <Route path="/login" component={Login} />
-        </div>
-      </Router>
-    );
+    return <Router>
+        <MuiThemeProvider>
+          <div className="App">
+            <AppBar position="static" color="default">
+              <Toolbar>
+                <Typography variant="title" color="inherit">
+                  Kenny Leung | UX Developer
+                </Typography>
+              <Link to="/login">Login</Link>
+              </Toolbar>
+            </AppBar>
+            <AuthBtn />
+            <Route path="/" component={CardList} />
+            <Route path={`/portfolio/:portfoTitle`} component={PortfolioItem} />
+            <Route path="/logout" component={Logout} />
+            <Route path="/login" component={Login} />
+          </div>
+        </MuiThemeProvider>
+      </Router>;
   }
 }
 
