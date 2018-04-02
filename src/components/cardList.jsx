@@ -3,33 +3,26 @@ import axios from "axios";
 import { baseUrl } from "./global";
 import Card from "./card";
 
+
 class CardList extends Component {
-  constructor() {
-    super();
-    this.state = {
-      cards: [],
-      isLogged: localStorage.getItem("auth")
-    };
-  // this.getPortfolios = this.getPortfolios.bind(this);
-  }
+  state = {
+    cards: [],
+    isLogged: localStorage.getItem("auth")
+  };
 
   getPortfolios() {
     let auth = localStorage.getItem("auth");
-    var _this = this;
-    _this.setState({
-      cards: []
-    })
     if (auth != null) {
-      this.serverRequest  = axios.get(`${baseUrl}/portfolios?_format=json`, {
+      axios.get(`${baseUrl}/portfolios?_format=json`, {
         headers: { Authorization: "Basic " + auth }
       }).then(resp => {
-        _this.setState({
+        this.setState({
           cards: resp.data
         });
       });
     } else {
-      this.serverRequest = axios.get(`${baseUrl}/portfolios?_format=json`).then(resp => {
-        _this.setState({
+      axios.get(`${baseUrl}/portfolios?_format=json`).then(resp => {
+        this.setState({
           cards: resp.data
         });
       });
@@ -54,5 +47,5 @@ class CardList extends Component {
     );
   }
 }
-export default CardList
 
+export default CardList

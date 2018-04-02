@@ -5,7 +5,7 @@ import { portfoUrl, urlMask } from "./global";
 const Card = props => {
   return (
     <div className="card">
-      <Link to={`/portfolio/${portfoUrl(props.title)}`}>
+      {/* <Link to={`/portfolio/${portfoUrl(props.title)}`}> */}
         <div className="thumbnail">
           <img
             width="100px"
@@ -14,7 +14,7 @@ const Card = props => {
           />
         </div>
         <div className="title">{props.title}</div>
-      </Link>
+      {/* </Link> */}
     </div>
   );
 };
