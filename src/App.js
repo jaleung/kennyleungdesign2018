@@ -10,7 +10,6 @@ import AuthBtn from "./components/auth";
 import myTheme from "./components/theme";
 import CardList from "./components/cardList.jsx";
 import Card from "./components/card.jsx";
-import PortfolioItem from "./components/portfolioItem.jsx";
 // import NavBar from "./components/navBar.jsx"
 
 import AppBar from "material-ui/AppBar";
@@ -56,7 +55,6 @@ class App extends Component {
             </AppBar>
             <AuthBtn />
             <Route path="/" component={CardList} />
-            <Route path={`/portfolio/:portfoTitle`} component={PortfolioItem} />
             <Route path="/logout" component={Logout} />
             <Route path="/login" component={Login} />
           </div>
