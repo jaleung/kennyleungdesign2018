@@ -8,6 +8,7 @@ import Typography from "material-ui/Typography";
 const stylePaper = {
   background: "#fff",
   padding: 8,
+  margin: 8,
   transition: "all 0.3s ease-in-out"
 };
 
@@ -28,7 +29,7 @@ class PortfoCard extends Component {
 
   render() {
     return (
-      <Grid item xs={12} sm={6} md={3}>
+      <Grid item xs={12} sm={6} md={3} spacing={8}>
         <Card
           onMouseOver={this.hoverOn}
           onMouseOut={this.hoverOff}

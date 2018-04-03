@@ -48,7 +48,7 @@ class CardList extends Component {
 
   render() {
     return (
-      <Grid container spacing={16} alignItems="center" style={style}>
+      <Grid container alignItems="center" style={style}>
         {this.state.cards.map(card => <PortfoCard key={card.uuid} {...card} />)}
       </Grid>
     );

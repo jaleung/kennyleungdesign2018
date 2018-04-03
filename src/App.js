@@ -9,26 +9,24 @@ import myTheme from "./components/theme";
 import CardList from "./components/cardList.jsx";
 import PortfolioItem from "./components/portfolioItem.jsx";
 import NavBar from "./components/navBar.jsx";
+import CssBaseline from 'material-ui/CssBaseline';
+
 
 class App extends Component {
   render() {
-    return (
-        <Router>
-          <MuiThemeProvider theme={myTheme}>
-            <div className="App">
-              <NavBar />
-              <AuthBtn />
-              <Route path="/" component={CardList} />
-              <Route path="/logout" component={Logout} />
-              <Route path="/login" component={Login} />
-              <Route
-                path={`/portfolio/:portfoTitle`}
-                component={PortfolioItem}
-              />
-            </div>
-          </MuiThemeProvider>
-        </Router>
-    );
+    return <Router>
+        <MuiThemeProvider theme={myTheme}>
+          <CssBaseline />
+          <div className="App">
+            <NavBar />
+            <AuthBtn />
+            <Route path="/" component={CardList} />
+            <Route path="/logout" component={Logout} />
+            <Route path="/login" component={Login} />
+            <Route path={`/portfolio/:portfoTitle`} component={PortfolioItem} />
+          </div>
+        </MuiThemeProvider>
+      </Router>;
   }
 }
 

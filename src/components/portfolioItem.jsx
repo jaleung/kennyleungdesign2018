@@ -1,10 +1,34 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import { baseUrl } from "./global";
-import { Link } from "react-router-dom";
+import Dialog, {
+  DialogActions,
+  DialogContent,
+  DialogTitle
+} from "material-ui/Dialog";
+import { withRouter } from "react-router-dom";
+import Button from "material-ui/Button";
+import Slide from "material-ui/transitions/Slide";
 
 class PortfolioItem extends Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalOpen: true
+    };
+
+    this.handleClose = this.handleClose.bind(this);
+  }
+
+  handleClose() {
+    this.setState(
+      { modalOpen: false }, () => {
+      setTimeout(() => {
+        this.props.history.push("/");
+      }, 300)
+      }
+    );
+  }
 
   getPortfolio() {
     this.setState({});
@@ -33,16 +57,34 @@ class PortfolioItem extends Component {
 
   componentDidMount() {
     this.getPortfolio();
+    console.log(this.state.modalOpen);
   }
+
+  Transition(props) {
+    return <Slide direction="up" {...props} />;
+  }
+
   render() {
     return (
       <div>
-        <Link to={`/`}>Back</Link>
-        <h1>{this.state.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: this.state.body }} />
+        <Dialog
+          maxWidth="md"
+          open={this.state.modalOpen}
+          onClose={this.handleClose}
+          className="portfolioDialog"
+          transition={this.Transition}
+        >
+          <DialogTitle>{this.state.title}</DialogTitle>
+          <DialogContent className="portflioDialigContent">
+            <div dangerouslySetInnerHTML={{ __html: this.state.body }} />
+          </DialogContent>
+          <DialogActions>
+              <Button onClick={this.handleClose}>Back</Button>
+          </DialogActions>
+        </Dialog>
       </div>
     );
   }
 }
 
-export default PortfolioItem;
+export default withRouter(PortfolioItem);
