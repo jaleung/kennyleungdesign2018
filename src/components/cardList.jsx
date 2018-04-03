@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { baseUrl } from "./global";
-import Card from "./card";
+import PortfoCard from "./card";
 import Grid from "material-ui/Grid";
 
 const style = {
@@ -49,7 +49,7 @@ class CardList extends Component {
   render() {
     return (
       <Grid container spacing={16} alignItems="center" style={style}>
-        {this.state.cards.map(card => <Card key={card.uuid} {...card} />)}
+        {this.state.cards.map(card => <PortfoCard key={card.uuid} {...card} />)}
       </Grid>
     );
   }
