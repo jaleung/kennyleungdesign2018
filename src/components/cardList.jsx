@@ -2,7 +2,14 @@ import React, { Component } from "react";
 import axios from "axios";
 import { baseUrl } from "./global";
 import Card from "./card";
+import Grid from "material-ui/Grid";
 
+const style = {
+  marginTop: 64,
+  paddingTop: 16,
+  paddingLeft: '10vw',
+  paddingRight: '10vw'
+}
 
 class CardList extends Component {
   state = {
@@ -41,9 +48,9 @@ class CardList extends Component {
 
   render() {
     return (
-      <div>
+      <Grid container spacing={16} alignItems="center" style={style}>
         {this.state.cards.map(card => <Card key={card.uuid} {...card} />)}
-      </div>
+      </Grid>
     );
   }
 }

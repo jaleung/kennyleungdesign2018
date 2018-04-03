@@ -8,15 +8,15 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
     return (
-        <AppBar position="static" color="default">
+        <AppBar position="fixed" color="default">
           <Toolbar>
             <Grid container spacing={8} alignItems="center">
-              <Grid item xs={12} sm={4} md={3} style={{ textAlign: "left" }}>
+              <Grid item xs={12} sm={4} xl={3} style={{ textAlign: "left" }}>
                 <Typography variant="title" color="inherit">
                   <Link to="/">Kenny Leung | UX Developer</Link>
                 </Typography>
               </Grid>
-              <Grid item xs={12} sm={8} md={9} style={{ textAlign: "right" }}>
+              <Grid item xs={12} sm={8} xl={9} style={{ textAlign: "right" }}>
                 <Link to="/login">
                   <Button>Login</Button>
                 </Link>
