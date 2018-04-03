@@ -1,8 +1,7 @@
-
 import React, { Component } from "react";
-import Axios from "axios"
-import { baseUrl } from "./global"
-import { BrowserRouter as Link } from "react-router-dom";
+import Axios from "axios";
+import { baseUrl } from "./global";
+import { Link } from "react-router-dom";
 
 class PortfolioItem extends Component {
   state = {};

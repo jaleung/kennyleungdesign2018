@@ -1,15 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import AppBar from "material-ui/AppBar";
 import Toolbar from "material-ui/Toolbar";
 import Typography from "material-ui/Typography";
 import Grid from "material-ui/Grid";
 import Button from "material-ui/Button";
-import { BrowserRouter as Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-class NavBar extends Component {
-  render() {
+const NavBar = () => {
     return (
-      <div>
         <AppBar position="static" color="default">
           <Toolbar>
             <Grid container spacing={8} alignItems="center">
@@ -26,9 +24,7 @@ class NavBar extends Component {
             </Grid>
           </Toolbar>
         </AppBar>
-      </div>
     );
-  }
 }
 
 export default NavBar;
