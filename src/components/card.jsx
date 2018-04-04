@@ -4,6 +4,8 @@ import { portfoUrl, urlMask } from "./global";
 import Grid from "material-ui/Grid";
 import Card from "material-ui/Card";
 import Typography from "material-ui/Typography";
+import { CircularProgress } from "material-ui/Progress";
+import Img from "react-image";
 
 const stylePaper = {
   background: "#fff",
@@ -40,10 +42,11 @@ class PortfoCard extends Component {
           <Link to={`/portfolio/${portfoUrl(this.props.title)}`}>
             <div>
               <div className="thumbnail">
-                <img
+                <Img
                   style={styleImg}
                   src={urlMask(this.props.field_thumbnail)}
                   alt={this.props.title}
+                  loader={<CircularProgress />}
                 />
               </div>
               <div className="title">
