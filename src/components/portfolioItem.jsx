@@ -11,12 +11,14 @@ import Button from "material-ui/Button";
 import Slide from "material-ui/transitions/Slide";
 import LazyLoad from "react-lazyload";
 import ReactHtmlParser from "react-html-parser";
+import { CircularProgress } from "material-ui";
 
 class PortfolioItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalOpen: true
+      modalOpen: true,
+      loading: true
     };
 
     this.handleClose = this.handleClose.bind(this);
@@ -55,9 +57,14 @@ class PortfolioItem extends Component {
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.getPortfolio();
-    console.log(this.state.modalOpen);
+  }
+
+  componentDidMount() {
+    this.setState({
+      loading: false
+    })
   }
 
   Transition(props) {
@@ -76,9 +83,11 @@ class PortfolioItem extends Component {
         >
           <DialogTitle> {this.state.title} </DialogTitle>
           <DialogContent className="portflioDialigContent">
+            {this.state.loading ? (<CircularProgress />): (
             <LazyLoad height={500}>
               {ReactHtmlParser(this.state.body)}
             </LazyLoad>
+            )}
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose}>Back</Button>
