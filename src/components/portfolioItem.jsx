@@ -10,8 +10,19 @@ import { withRouter } from "react-router-dom";
 import Button from "material-ui/Button";
 import Slide from "material-ui/transitions/Slide";
 import LazyLoad from "react-lazyload";
-import ReactHtmlParser from "react-html-parser";
 import { CircularProgress } from "material-ui";
+import Parser from 'html-react-parser';
+import Img from "react-image";
+
+const transHTML = (dom) => {
+  if (dom.type ==='tag' && dom.name === 'img') {
+    return (
+      <Img 
+        src={dom.attribs.src} 
+        loader={<CircularProgress color="red"/>} />
+    )
+  }
+}
 
 class PortfolioItem extends Component {
   constructor(props) {
@@ -42,7 +53,8 @@ class PortfolioItem extends Component {
       }).then(resp => {
         this.setState({
           title: resp.data[0].title,
-          body: resp.data[0].body
+          body: resp.data[0].body,
+          loading: false
         });
       });
     } else {
@@ -57,14 +69,8 @@ class PortfolioItem extends Component {
     }
   }
 
-  componentWillMount() {
-    this.getPortfolio();
-  }
-
   componentDidMount() {
-    this.setState({
-      loading: false
-    })
+    this.getPortfolio();
   }
 
   Transition(props) {
@@ -72,6 +78,16 @@ class PortfolioItem extends Component {
   }
 
   render() {
+    if (!this.state.loading) {
+    console.log(Parser(this.state.body, {
+      replace: (domNode) => {
+        if (domNode.type === 'tag' && domNode.name === 'img') {
+          console.log('found img!')
+          console.log(domNode);
+        }
+      }
+    }));
+    }
     return (
       <div>
         <Dialog
@@ -83,11 +99,11 @@ class PortfolioItem extends Component {
         >
           <DialogTitle> {this.state.title} </DialogTitle>
           <DialogContent className="portflioDialigContent">
-            {this.state.loading ? (<CircularProgress />): (
             <LazyLoad height={500}>
-              {ReactHtmlParser(this.state.body)}
+              {this.state.loading ? (<p>Loading...</p>) : (Parser(this.state.body, {
+                replace: (domNode) => transHTML(domNode)
+              }))}
             </LazyLoad>
-            )}
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose}>Back</Button>
