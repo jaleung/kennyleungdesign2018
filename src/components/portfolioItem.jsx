@@ -10,6 +10,7 @@ import { withRouter } from "react-router-dom";
 import Button from "material-ui/Button";
 import Slide from "material-ui/transitions/Slide";
 import LazyLoad from "react-lazyload";
+import ReactHtmlParser from "react-html-parser";
 
 class PortfolioItem extends Component {
   constructor(props) {
@@ -22,13 +23,11 @@ class PortfolioItem extends Component {
   }
 
   handleClose() {
-    this.setState(
-      { modalOpen: false }, () => {
+    this.setState({ modalOpen: false }, () => {
       setTimeout(() => {
         this.props.history.push("/");
-      }, 300)
-      }
-    );
+      }, 300);
+    });
   }
 
   getPortfolio() {
@@ -75,14 +74,14 @@ class PortfolioItem extends Component {
           className="portfolioDialog"
           transition={this.Transition}
         >
-          <DialogTitle > {this.state.title} </DialogTitle>
+          <DialogTitle> {this.state.title} </DialogTitle>
           <DialogContent className="portflioDialigContent">
-            <LazyLoad>
-              <div dangerouslySetInnerHTML={{ __html: this.state.body }} />
+            <LazyLoad height={500}>
+              {ReactHtmlParser(this.state.body)}
             </LazyLoad>
           </DialogContent>
           <DialogActions>
-              <Button onClick={this.handleClose}>Back</Button>
+            <Button onClick={this.handleClose}>Back</Button>
           </DialogActions>
         </Dialog>
       </div>
