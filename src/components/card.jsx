@@ -29,7 +29,7 @@ class PortfoCard extends Component {
 
   render() {
     return (
-      <Grid item xs={12} sm={6} md={3} spacing={8}>
+      <Grid item xs={12} sm={6} md={3}>
         <Card
           onMouseOver={this.hoverOn}
           onMouseOut={this.hoverOff}

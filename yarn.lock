@@ -2,6 +2,12 @@
 # yarn lockfile v1
 
 
+"@trainline/react-skeletor@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@trainline/react-skeletor/-/react-skeletor-1.0.2.tgz#a5cab1482ae59b187cb4e60de905cdb552b15b06"
+  dependencies:
+    prop-types "^15.5.10"
+
 "@types/jss@^9.3.0":
   version "9.3.3"
   resolved "https://registry.yarnpkg.com/@types/jss/-/jss-9.3.3.tgz#818c6281c1909bfba173ee220fd1236fdeeb708e"

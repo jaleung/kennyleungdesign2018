@@ -74,7 +74,7 @@ class PortfolioItem extends Component {
           className="portfolioDialog"
           transition={this.Transition}
         >
-          <DialogTitle>{this.state.title}</DialogTitle>
+          <DialogTitle > {this.state.title} </DialogTitle>
           <DialogContent className="portflioDialigContent">
             <div dangerouslySetInnerHTML={{ __html: this.state.body }} />
           </DialogContent>
