@@ -5,6 +5,8 @@ import Grid from "material-ui/Grid";
 import Card from "material-ui/Card";
 import Typography from "material-ui/Typography";
 import { CircularProgress } from "material-ui/Progress";
+import { CSSTransitionGroup } from "react-transition-group";
+import LazyLoad from "react-lazyload";
 import Img from "react-image";
 
 const stylePaper = {
@@ -17,6 +19,22 @@ const stylePaper = {
 const styleImg = {
   width: "100%"
 };
+
+const LoadContainer = () => (
+  <div style={{
+    width: '100%',
+    paddingBottom: '100%',
+    position: 'relative',
+    display: 'flex',
+    justifyContent: 'center',
+    background: '#f1f1f1'
+  }}>
+    <CircularProgress style={{
+      paddingTop: 'calc(50% - 40px)',
+      position: 'absolute'
+    }} />
+  </div>
+)
 
 class PortfoCard extends Component {
   constructor(props) {
@@ -42,12 +60,22 @@ class PortfoCard extends Component {
           <Link to={`/portfolio/${portfoUrl(this.props.title)}`}>
             <div>
               <div className="thumbnail">
-                <Img
-                  style={styleImg}
-                  src={urlMask(this.props.field_thumbnail)}
-                  alt={this.props.title}
-                  loader={<CircularProgress />}
-                />
+                <LazyLoad>
+                  <CSSTransitionGroup
+                    key="1"
+                    transitionName="fade"
+                    transitionAppear
+                    transitionAppearTimeout={500}
+                    transitionEnter={false}
+                    transitionLeave={false}
+                  >
+                    <Img
+                      style={styleImg}
+                      src={urlMask(this.props.field_thumbnail)}
+                      alt={this.props.title} loader={<LoadContainer />}
+                    />
+                  </CSSTransitionGroup>
+                </LazyLoad>
               </div>
               <div className="title">
                 <Typography color="primary" style={{ margin: "8px 0" }}>

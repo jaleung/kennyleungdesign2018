@@ -9,6 +9,7 @@ import Dialog, {
 import { withRouter } from "react-router-dom";
 import Button from "material-ui/Button";
 import Slide from "material-ui/transitions/Slide";
+import LazyLoad from "react-lazyload";
 
 class PortfolioItem extends Component {
   constructor(props) {
@@ -76,7 +77,9 @@ class PortfolioItem extends Component {
         >
           <DialogTitle > {this.state.title} </DialogTitle>
           <DialogContent className="portflioDialigContent">
-            <div dangerouslySetInnerHTML={{ __html: this.state.body }} />
+            <LazyLoad>
+              <div dangerouslySetInnerHTML={{ __html: this.state.body }} />
+            </LazyLoad>
           </DialogContent>
           <DialogActions>
               <Button onClick={this.handleClose}>Back</Button>
