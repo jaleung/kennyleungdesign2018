@@ -21,20 +21,33 @@ const styleImg = {
 };
 
 const LoadContainer = () => (
-  <div style={{
-    width: '100%',
-    paddingBottom: '100%',
-    position: 'relative',
-    display: 'flex',
-    justifyContent: 'center',
-    background: '#f1f1f1'
-  }}>
-    <CircularProgress style={{
-      paddingTop: 'calc(50% - 40px)',
-      position: 'absolute'
-    }} />
-  </div>
-)
+  <CSSTransitionGroup
+    key="1"
+    transitionName="fade"
+    transitionAppear={true}
+    transitionAppearTimeout={500}
+    transitionEnter={false}
+    transitionLeave={false}
+  >
+    <div
+      style={{
+        width: "100%",
+        paddingBottom: "100%",
+        position: "relative",
+        display: "flex",
+        justifyContent: "center",
+        background: "#f1f1f1"
+      }}
+    >
+      <CircularProgress
+        style={{
+          paddingTop: "calc(50% - 20px)",
+          position: "absolute"
+        }}
+      />
+    </div>
+  </CSSTransitionGroup>
+);
 
 class PortfoCard extends Component {
   constructor(props) {
@@ -50,41 +63,43 @@ class PortfoCard extends Component {
   render() {
     return (
       <Grid item xs={12} sm={6} md={3}>
-        <Card
-          onMouseOver={this.hoverOn}
-          onMouseOut={this.hoverOff}
-          color="secondary"
-          style={stylePaper}
-          elevation={this.state.elevation}
-        >
-          <Link to={`/portfolio/${portfoUrl(this.props.title)}`}>
-            <div>
-              <div className="thumbnail">
-                <LazyLoad>
-                  <CSSTransitionGroup
-                    key="1"
-                    transitionName="fade"
-                    transitionAppear
-                    transitionAppearTimeout={500}
-                    transitionEnter={false}
-                    transitionLeave={false}
-                  >
+        <LazyLoad>
+          <CSSTransitionGroup
+            key="2"
+            transitionName="fade"
+            transitionAppear={true}
+            transitionAppearTimeout={500}
+            transitionEnter={false}
+            transitionLeave={false}
+          >
+            <Card
+              onMouseOver={this.hoverOn}
+              onMouseOut={this.hoverOff}
+              color="secondary"
+              style={stylePaper}
+              elevation={this.state.elevation}
+            >
+              <Link to={`/portfolio/${portfoUrl(this.props.title)}`}>
+                <div>
+                  <div className="thumbnail">
                     <Img
                       style={styleImg}
                       src={urlMask(this.props.field_thumbnail)}
-                      alt={this.props.title} loader={<LoadContainer />}
+                      // src="https://wallpaperbrowse.com/media/images/303836.jpg"
+                      alt={this.props.title}
+                      loader={<LoadContainer />}
                     />
-                  </CSSTransitionGroup>
-                </LazyLoad>
-              </div>
-              <div className="title">
-                <Typography color="primary" style={{ margin: "8px 0" }}>
-                  {this.props.title}
-                </Typography>
-              </div>
-            </div>
-          </Link>
-        </Card>
+                  </div>
+                  <div className="title">
+                    <Typography color="primary" style={{ margin: "8px 0" }}>
+                      {this.props.title}
+                    </Typography>
+                  </div>
+                </div>
+              </Link>
+            </Card>
+          </CSSTransitionGroup>
+        </LazyLoad>
       </Grid>
     );
   }

@@ -9,10 +9,11 @@ import Dialog, {
 import { withRouter } from "react-router-dom";
 import Button from "material-ui/Button";
 import Slide from "material-ui/transitions/Slide";
-import LazyLoad from "react-lazyload";
 import { CircularProgress } from "material-ui";
 import Parser from 'html-react-parser';
 import Img from "react-image";
+import hold from 'react-hold'
+
 
 const transHTML = (dom) => {
   if (dom.type ==='tag' && dom.name === 'img') {
@@ -99,11 +100,9 @@ class PortfolioItem extends Component {
         >
           <DialogTitle> {this.state.title} </DialogTitle>
           <DialogContent className="portflioDialigContent">
-            <LazyLoad height={500}>
               {this.state.loading ? (<p>Loading...</p>) : (Parser(this.state.body, {
                 replace: (domNode) => transHTML(domNode)
               }))}
-            </LazyLoad>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose}>Back</Button>
