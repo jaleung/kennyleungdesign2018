@@ -42,7 +42,7 @@ a:focus { outline: none; }
 
 .fade-appear.fade-appear-active {
   opacity: 1;
-  transition: opacity .7s ease-in;
+  transition: opacity .3s ease-in;
 }
 
 .fade-enter {

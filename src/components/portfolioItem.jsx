@@ -10,20 +10,28 @@ import { withRouter } from "react-router-dom";
 import Button from "material-ui/Button";
 import Slide from "material-ui/transitions/Slide";
 import { CircularProgress } from "material-ui";
-import Parser from 'html-react-parser';
+import Parser from "html-react-parser";
 import Img from "react-image";
-import hold from 'react-hold'
+import hold, { holders, align } from "react-hold";
+import { CSSTransitionGroup } from "react-transition-group";
 
 
-const transHTML = (dom) => {
-  if (dom.type ==='tag' && dom.name === 'img') {
+const transHTML = dom => {
+  if (dom.type === "tag" && dom.name === "img") {
     return (
-      <Img 
-        src={dom.attribs.src} 
-        loader={<CircularProgress color="red"/>} />
-    )
+      <Img
+        src={dom.attribs.src}
+        loader={
+          <div style={{ textAlign: "center" }}>
+            <CircularProgress style={{ color: "#fff" }} />
+          </div>
+        }
+      />
+    );
   }
-}
+};
+
+const Div = hold("div", props => !props.children);
 
 class PortfolioItem extends Component {
   constructor(props) {
@@ -80,14 +88,16 @@ class PortfolioItem extends Component {
 
   render() {
     if (!this.state.loading) {
-    console.log(Parser(this.state.body, {
-      replace: (domNode) => {
-        if (domNode.type === 'tag' && domNode.name === 'img') {
-          console.log('found img!')
-          console.log(domNode);
-        }
-      }
-    }));
+      console.log(
+        Parser(this.state.body, {
+          replace: domNode => {
+            if (domNode.type === "tag" && domNode.name === "img") {
+              console.log("found img!");
+              console.log(domNode);
+            }
+          }
+        })
+      );
     }
     return (
       <div>
@@ -98,11 +108,32 @@ class PortfolioItem extends Component {
           className="portfolioDialog"
           transition={this.Transition}
         >
-          <DialogTitle> {this.state.title} </DialogTitle>
+          <DialogTitle>
+            <Div holder={holders.Text} props={{ length: 30 }}>
+              {this.state.title}
+            </Div>
+          </DialogTitle>
           <DialogContent className="portflioDialigContent">
-              {this.state.loading ? (<p>Loading...</p>) : (Parser(this.state.body, {
-                replace: (domNode) => transHTML(domNode)
-              }))}
+            {this.state.loading ? (
+              <div style={{ textAlign: "center" }}>
+                <CircularProgress style={{ color: "#fff" }} />
+              </div>
+            ) : (
+              <CSSTransitionGroup
+                key="1"
+                transitionName="fade"
+                transitionAppear={true}
+                transitionAppearTimeout={500}
+                transitionEnter={false}
+                transitionLeave={false}
+              >
+                <div>
+                {Parser(this.state.body, {
+                  replace: domNode => transHTML(domNode)
+                })}
+                </div>
+              </CSSTransitionGroup>
+            )}
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose}>Back</Button>
