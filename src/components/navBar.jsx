@@ -17,8 +17,8 @@ const NavBar = () => {
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={8} xl={9} style={{ textAlign: "right" }}>
-                <Link to="/login">
-                  <Button>Login</Button>
+                <Link to="/">
+                  <Button>Lorem</Button>
                 </Link>
               </Grid>
             </Grid>

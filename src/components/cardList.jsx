@@ -3,6 +3,7 @@ import axios from "axios";
 import { baseUrl } from "./global";
 import PortfoCard from "./card";
 import Grid from "material-ui/Grid";
+import AuthBtn from "./auth";
 
 const style = {
   marginTop: 64,
@@ -14,7 +15,8 @@ const style = {
 class CardList extends Component {
   state = {
     cards: [],
-    isLogged: localStorage.getItem("auth")
+    isLogged: localStorage.getItem("auth"),
+    loaded: false
   };
 
   getPortfolios() {
@@ -24,13 +26,15 @@ class CardList extends Component {
         headers: { Authorization: "Basic " + auth }
       }).then(resp => {
         this.setState({
-          cards: resp.data
+          cards: resp.data,
+          loaded: true
         });
       });
     } else {
       axios.get(`${baseUrl}/portfolios?_format=json`).then(resp => {
         this.setState({
-          cards: resp.data
+          cards: resp.data,
+          loaded: true
         });
       });
     }
@@ -50,6 +54,7 @@ class CardList extends Component {
     return (
       <Grid container alignItems="center" style={style}>
         {this.state.cards.map(card => <PortfoCard key={card.uuid} {...card} />)}
+        <AuthBtn loaded={this.state.loaded}/>
       </Grid>
     );
   }

@@ -9,7 +9,7 @@ import { CSSTransitionGroup } from "react-transition-group";
 import LazyLoad from "react-lazyload";
 import Img from "react-image";
 
-const stylePaper = {
+export const stylePaper = {
   background: "#fff",
   padding: 8,
   margin: 8,
@@ -57,8 +57,8 @@ class PortfoCard extends Component {
     };
   }
 
-  hoverOn = () => this.setState({ elevation: 24 });
-  hoverOff = () => this.setState({ elevation: 2 });
+  hoverOnCard = () => this.setState({ elevation: 24 });
+  hoverOffCard = () => this.setState({ elevation: 2 });
 
   render() {
     return (
@@ -73,8 +73,8 @@ class PortfoCard extends Component {
             transitionLeave={false}
           >
             <Card
-              onMouseOver={this.hoverOn}
-              onMouseOut={this.hoverOff}
+              onMouseOver={this.hoverOnCard}
+              onMouseOut={this.hoverOffCard}
               color="secondary"
               style={stylePaper}
               elevation={this.state.elevation}

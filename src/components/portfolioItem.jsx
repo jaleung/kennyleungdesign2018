@@ -8,11 +8,13 @@ import Dialog, {
 } from "material-ui/Dialog";
 import { withRouter } from "react-router-dom";
 import Button from "material-ui/Button";
-import Slide from "material-ui/transitions/Slide";
+// import Slide from "material-ui/transitions/Slide";
+// import Grow from 'material-ui/transitions/Grow';
+import Zoom from 'material-ui/transitions/Zoom';
 import { CircularProgress } from "material-ui";
 import Parser from "html-react-parser";
 import Img from "react-image";
-import hold, { holders, align } from "react-hold";
+import hold, { holders } from "react-hold";
 import { CSSTransitionGroup } from "react-transition-group";
 
 const placeholderImgStyle = {
@@ -63,6 +65,7 @@ class PortfolioItem extends Component {
         this.setState({
           title: resp.data[0].title,
           body: resp.data[0].body,
+          id: resp.data[0].uuid,
           loading: false
         });
       });
@@ -71,7 +74,9 @@ class PortfolioItem extends Component {
         resp => {
           this.setState({
             title: resp.data[0].title,
-            body: resp.data[0].body
+            body: resp.data[0].body,
+            id: resp.data[0].uuid,
+            loading: false
           });
         }
       );
@@ -83,7 +88,8 @@ class PortfolioItem extends Component {
   }
 
   Transition(props) {
-    return <Slide direction="up" {...props} />;
+    // return <Slide direction="up" {...props} />;
+    return <Zoom key={props.key} in {...props} />;
   }
 
   render() {
@@ -91,6 +97,7 @@ class PortfolioItem extends Component {
       <div>
         <Dialog
           maxWidth="md"
+          key={this.state.id}
           open={this.state.modalOpen}
           onClose={this.handleClose}
           className="portfolioDialog"
@@ -108,7 +115,7 @@ class PortfolioItem extends Component {
               </div>
             ) : (
               <CSSTransitionGroup
-                key="1"
+                key={this.state.id}
                 transitionName="fade"
                 transitionAppear={true}
                 transitionAppearTimeout={500}

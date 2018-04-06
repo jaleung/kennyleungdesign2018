@@ -3,9 +3,12 @@ body {
   padding: 0;
   font-family: sans-serif;
   background: #444;
+  /* work mode */
+  filter: grayscale(100%);
 }
 
-body, body a {
+body,
+body a {
   color: #fff;
 }
 
@@ -13,7 +16,9 @@ a {
   text-decoration: none;
 }
 
-a:focus { outline: none; }
+a:focus {
+  outline: none;
+}
 
 .portfolioDialog img {
   max-width: 100%;
@@ -42,7 +47,7 @@ a:focus { outline: none; }
 
 .fade-appear.fade-appear-active {
   opacity: 1;
-  transition: opacity .3s ease-in;
+  transition: opacity 0.3s ease-in;
 }
 
 .fade-enter {
@@ -61,4 +66,26 @@ a:focus { outline: none; }
 .fade-leave.fade-leave-active {
   opacity: 0.01;
   transition: opacity 300ms ease-in;
+}
+
+.loginThumbnail {
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+}
+
+.loginThumbnail .inner {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #efefef;
+}
+
+.make-emojis-large > span {
+  font-size: 4.5rem;
+  line-height: 1;
 }
