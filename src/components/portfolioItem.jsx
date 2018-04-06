@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Axios from "axios";
-import { baseUrl } from "./global";
+import { baseUrl, urlMask } from "./global";
 import Dialog, {
   DialogActions,
   DialogContent,
@@ -15,19 +15,19 @@ import Img from "react-image";
 import hold, { holders, align } from "react-hold";
 import { CSSTransitionGroup } from "react-transition-group";
 
+const placeholderImgStyle = {
+  textAlign: 'center',
+  minWidth: 300,
+  paddingBottom: '56.25%',
+  background: '#f1f1f1',
+  position: 'relative'
+}
 
 const transHTML = dom => {
   if (dom.type === "tag" && dom.name === "img") {
-    return (
-      <Img
-        src={dom.attribs.src}
-        loader={
-          <div style={{ textAlign: "center" }}>
-            <CircularProgress style={{ color: "#fff" }} />
-          </div>
-        }
-      />
-    );
+    return <Img src={urlMask(dom.attribs.src)} loader={<div style={placeholderImgStyle}>
+            <CircularProgress style={{ position: "absolute", top: "calc(50% - 20px)", left: "calc(50% - 20px)" }} />
+          </div>} />;
   }
 };
 
@@ -87,18 +87,6 @@ class PortfolioItem extends Component {
   }
 
   render() {
-    if (!this.state.loading) {
-      console.log(
-        Parser(this.state.body, {
-          replace: domNode => {
-            if (domNode.type === "tag" && domNode.name === "img") {
-              console.log("found img!");
-              console.log(domNode);
-            }
-          }
-        })
-      );
-    }
     return (
       <div>
         <Dialog
