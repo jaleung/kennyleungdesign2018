@@ -8,8 +8,6 @@ import Dialog, {
 } from "material-ui/Dialog";
 import { withRouter } from "react-router-dom";
 import Button from "material-ui/Button";
-// import Slide from "material-ui/transitions/Slide";
-// import Grow from 'material-ui/transitions/Grow';
 import Zoom from 'material-ui/transitions/Zoom';
 import { CircularProgress } from "material-ui";
 import Parser from "html-react-parser";
