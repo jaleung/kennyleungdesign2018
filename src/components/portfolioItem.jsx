@@ -12,7 +12,6 @@ import Zoom from 'material-ui/transitions/Zoom';
 import { CircularProgress } from "material-ui";
 import Parser from "html-react-parser";
 import Img from "react-image";
-import hold, { holders } from "react-hold";
 import { CSSTransitionGroup } from "react-transition-group";
 
 const placeholderImgStyle = {
@@ -30,8 +29,6 @@ const transHTML = dom => {
           </div>} />;
   }
 };
-
-const Div = hold("div", props => !props.children);
 
 class PortfolioItem extends Component {
   constructor(props) {
@@ -102,13 +99,13 @@ class PortfolioItem extends Component {
           transition={this.Transition}
         >
           <DialogTitle>
-            <Div holder={holders.Text} props={{ length: 30 }}>
-              {this.state.title}
-            </Div>
+            {this.state.loading ? (
+              'Loading...'
+            ) : this.state.title }
           </DialogTitle>
           <DialogContent className="portflioDialigContent">
             {this.state.loading ? (
-              <div style={{ textAlign: "center" }}>
+              <div style={{ textAlign: "center", minWidth: 300 }}>
                 <CircularProgress style={{ color: "#fff" }} />
               </div>
             ) : (

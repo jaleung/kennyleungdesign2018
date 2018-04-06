@@ -6,6 +6,12 @@ import Grid from "material-ui/Grid";
 import Button from "material-ui/Button";
 import { Link } from "react-router-dom";
 
+String.prototype.capitalize = function() {
+  return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
+const navItems = ['home', 'about', 'portfolio', 'contact']
+
 const NavBar = () => {
     return (
         <AppBar position="fixed" color="default">
@@ -17,9 +23,9 @@ const NavBar = () => {
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={8} xl={9} style={{ textAlign: "right" }}>
-                <Link to="/">
-                  <Button>Lorem</Button>
-                </Link>
+                  {navItems.map(navItem => (
+                    <Button key={navItem} href={'#' + navItem}>{ navItem.capitalize() }</Button>
+                  ))}
               </Grid>
             </Grid>
           </Toolbar>

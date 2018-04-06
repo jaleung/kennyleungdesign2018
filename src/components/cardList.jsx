@@ -4,13 +4,13 @@ import { baseUrl } from "./global";
 import PortfoCard from "./card";
 import Grid from "material-ui/Grid";
 import AuthBtn from "./auth";
+import ScrollableAnchor from "react-scrollable-anchor";
 
 const style = {
-  marginTop: 64,
   paddingTop: 16,
-  paddingLeft: '10vw',
-  paddingRight: '10vw'
-}
+  paddingLeft: "10vw",
+  paddingRight: "10vw"
+};
 
 class CardList extends Component {
   state = {
@@ -22,14 +22,16 @@ class CardList extends Component {
   getPortfolios() {
     let auth = localStorage.getItem("auth");
     if (auth != null) {
-      axios.get(`${baseUrl}/portfolios?_format=json`, {
-        headers: { Authorization: "Basic " + auth }
-      }).then(resp => {
-        this.setState({
-          cards: resp.data,
-          loaded: true
+      axios
+        .get(`${baseUrl}/portfolios?_format=json`, {
+          headers: { Authorization: "Basic " + auth }
+        })
+        .then(resp => {
+          this.setState({
+            cards: resp.data,
+            loaded: true
+          });
         });
-      });
     } else {
       axios.get(`${baseUrl}/portfolios?_format=json`).then(resp => {
         this.setState({
@@ -52,12 +54,18 @@ class CardList extends Component {
 
   render() {
     return (
-      <Grid container alignItems="center" style={style}>
-        {this.state.cards.map(card => <PortfoCard key={card.uuid} {...card} />)}
-        <AuthBtn loaded={this.state.loaded}/>
-      </Grid>
+      <ScrollableAnchor id={"portfolio"}>
+        <div className="modular-row portfolio">
+          <Grid container alignItems="center" style={style}>
+            {this.state.cards.map(card => (
+              <PortfoCard key={card.uuid} {...card} />
+            ))}
+            <AuthBtn loaded={this.state.loaded} />
+          </Grid>
+        </div>
+      </ScrollableAnchor>
     );
   }
 }
 
-export default CardList
+export default CardList;
