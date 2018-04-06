@@ -20,7 +20,9 @@ a:focus {
   outline: none;
 }
 
-.page-wrapper { margin-top: 64px; }
+.page-wrapper {
+  margin-top: 64px;
+}
 
 .portfolioDialog img {
   max-width: 100%;
@@ -45,6 +47,7 @@ a:focus {
 }
 .fade-appear {
   opacity: 0.01;
+  transition: opacity 0.3s ease-in;
 }
 
 .fade-appear.fade-appear-active {
@@ -94,13 +97,22 @@ a:focus {
 
 .modular-row {
   padding: 2em 10vw;
-  display: flex; 
+  display: flex;
   min-height: calc(100vh - 64px);
-  align-items: center; 
+  align-items: center;
   position: relative;
   margin-top: 64px;
 }
 
 .modular-row.portfolio {
   align-items: flex-start;
+}
+
+.card {
+  transition: all 100ms ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  transition: all 100ms ease-in-out;
 }

@@ -26,7 +26,7 @@ class AuthBtn extends Component {
     } else {
       return <Grid item xs={12} sm={6} md={3}>
           <CSSTransitionGroup key="2" transitionName="fade" transitionAppear={true} transitionAppearTimeout={500} transitionEnter={false} transitionLeave={false}>
-            <Card onMouseOver={this.hoverOnCard} onMouseOut={this.hoverOffCard} style={stylePaper} color="secondary" elevation={this.state.elevation}>
+            <Card onMouseOver={this.hoverOnCard} onMouseOut={this.hoverOffCard} style={stylePaper} color="secondary" elevation={this.state.elevation} className="card">
               <Link to={loggedIn ? "/logout" : "/login"}>
                 <div>
                   <div className="loginThumbnail">

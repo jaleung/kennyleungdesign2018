@@ -13,7 +13,7 @@ export const stylePaper = {
   background: "#fff",
   padding: 8,
   margin: 8,
-  transition: "all 0.3s ease-in-out"
+  transition: "all 0.1s ease-in-out"
 };
 
 const styleImg = {
@@ -67,7 +67,7 @@ class PortfoCard extends Component {
           <CSSTransitionGroup
             key="2"
             transitionName="fade"
-            transitionAppear={true}
+            transitionAppear
             transitionAppearTimeout={500}
             transitionEnter={false}
             transitionLeave={false}
@@ -77,6 +77,7 @@ class PortfoCard extends Component {
               onMouseOut={this.hoverOffCard}
               color="secondary"
               style={stylePaper}
+              className="card"
               elevation={this.state.elevation}
             >
               <Link to={`/portfolio/${portfoUrl(this.props.title)}`}>
