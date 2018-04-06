@@ -31,14 +31,14 @@ class AuthBtn extends Component {
                 <div>
                   <div className="loginThumbnail">
                     <div className="inner">
-                      <Emoji onlyEmojiClassName="make-emojis-large" text={loggedIn ? ":wave:" : ":smirk:"} />
+                      <Emoji onlyEmojiClassName="make-emojis-large" text={loggedIn ? ":wave:" : ":closed_lock_with_key:"} />
                     </div>
                   </div>
                   <div>
                     {loggedIn ? <Typography color="primary" style={{ padding: "8px 0" }}>
-                        Logout
+                        Bye!
                       </Typography> : <Typography color="primary" style={{ padding: "8px 0" }}>
-                        Login
+                        Even Cooler Stuffs
                       </Typography>}
                   </div>
                 </div>
