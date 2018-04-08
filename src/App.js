@@ -13,10 +13,15 @@ import Contact from "./components/contact";
 import Favicon from "react-favicon";
 // import Icon from "./components/icon.jsx"
 import {Footer} from "./components/footer.jsx"
+import About from "./components/about.jsx"
 
 class App extends Component {
+  componentDidMount() {
+    document.title = "Kenny Leung | UX Developer"
+  }
+
   render() {
-    console.log(myTheme)
+    // console.log(myTheme)
     configureAnchors({ offset: -60, scrollDuration: 300})
     return (
       <Router>
@@ -31,9 +36,7 @@ class App extends Component {
                 Home
                 </div>
               </ScrollableAnchor>
-              <ScrollableAnchor id={"about"}>
-                <div className="modular-row">About</div>
-              </ScrollableAnchor>
+                <About/>
               <Route path="/" component={CardList} />
               <Route path="/logout" component={Logout} />
               <Route path="/login" component={Login} />

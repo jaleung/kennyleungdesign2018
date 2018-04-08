@@ -45,6 +45,7 @@ a:focus {
   width: 10px;
   background: #555;
 }
+
 .fade-appear {
   opacity: 0.01;
   transition: opacity 0.3s ease-in;
@@ -99,7 +100,6 @@ a:focus {
   padding: 5em 10vw 2em;
   display: flex;
   min-height: calc(100vh - 64px);
-  /* align-items: center; */
   position: relative;
   flex-direction: column;
   margin-top: 64px;
@@ -111,6 +111,10 @@ a:focus {
 
 .modular-row.contact {
   min-height: 70vh;
+}
+
+.modular-row.about {
+  justify-content: center;
 }
 
 .card {

@@ -5,16 +5,17 @@ import Dialog, {
   DialogTitle
 } from "material-ui/Dialog";
 import { Redirect } from "react-router-dom";
-import Slide from "material-ui/transitions/Slide";
+import Grow from "material-ui/transitions/Grow";
 import { baseUrl } from "./global.jsx";
 import TextField from "material-ui/TextField";
 import Button from "material-ui/Button";
+import Emoji from "react-emoji-render";
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
+      name: "reader",
       email: "",
       password: "",
       success: "",
@@ -84,7 +85,7 @@ class Login extends Component {
   }
 
   Transition(props) {
-    return <Slide direction="up" {...props} />;
+    return <Grow key={props.key} in {...props} />;
   }
 
   render() {
@@ -100,18 +101,12 @@ class Login extends Component {
         onClose={this.handleClose}
         transition={this.Transition}
       >
-        <DialogTitle>Login</DialogTitle>
+        <DialogTitle>
+          Tell me your little secret{" "}
+          <Emoji text=":speak_no_evil:" />
+        </DialogTitle>
         <DialogContent>
           <form onSubmit={this.handleSubmit} autoComplete="off">
-            <TextField
-              label="username"
-              name="name"
-              value={this.state.name}
-              onChange={this.handleChange}
-              required
-              fullWidth
-              placeholder="Enter username"
-            />
             <TextField
               label="password"
               name="password"
@@ -122,7 +117,7 @@ class Login extends Component {
               type="password"
               placeholder="Enter password"
             />
-            <Button variant="raised" style={{ marginTop: 24 }} fullWidth type="submit">Login</Button>
+            <Button variant="raised" size="medium" style={{ marginTop: 24 }} fullWidth type="submit"> Go! </Button>
             <div>
               <p>{this.state.success}</p>
               <p dangerouslySetInnerHTML={{ __html: this.state.error }} />

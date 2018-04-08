@@ -4,7 +4,8 @@ import { baseUrl, urlMask } from "./global";
 import Dialog, {
   DialogActions,
   DialogContent,
-  DialogTitle
+  DialogTitle,
+  withMobileDialog
 } from "material-ui/Dialog";
 import { withRouter } from "react-router-dom";
 import Button from "material-ui/Button";
@@ -14,6 +15,7 @@ import Parser from "html-react-parser";
 import Img from "react-image";
 import { CSSTransitionGroup } from "react-transition-group";
 import { Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const placeholderImgStyle = {
   textAlign: "center",
@@ -21,6 +23,15 @@ const placeholderImgStyle = {
   paddingBottom: "56.25%",
   background: "#f1f1f1",
   position: "relative"
+};
+
+const loadingStyle = {
+  textAlign: "center",
+  minWidth: 150,
+  height: "60vh",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center"
 };
 
 const transHTML = dom => {
@@ -71,7 +82,16 @@ class PortfolioItem extends Component {
     if (auth != null) {
       Axios.get(`${baseUrl}/portfolio/${currentPortfo}?_format=json`, {
         headers: { Authorization: "Basic " + auth }
-      })
+      }).then(resp => {
+        this.setState({
+          title: resp.data[0].title,
+          body: resp.data[0].body,
+          id: resp.data[0].uuid,
+          loading: false
+        });
+      });
+    } else {
+      Axios.get(`${baseUrl}/portfolio/${currentPortfo}?_format=json`)
         .then(resp => {
           this.setState({
             title: resp.data[0].title,
@@ -79,23 +99,12 @@ class PortfolioItem extends Component {
             id: resp.data[0].uuid,
             loading: false
           });
-        });
-    } else {
-      Axios.get(`${baseUrl}/portfolio/${currentPortfo}?_format=json`).then(
-        resp => {
+        })
+        .catch(error => {
           this.setState({
-            title: resp.data[0].title,
-            body: resp.data[0].body,
-            id: resp.data[0].uuid,
-            loading: false
+            redirect: true
           });
-        }
-      )
-      .catch(error => {
-        this.setState({
-          redirect: true
         });
-      });
     }
   }
 
@@ -108,7 +117,7 @@ class PortfolioItem extends Component {
   }
 
   render() {
-    console.log(this.state.redirect)
+    const { fullScreen } = this.props;
     if (this.state.redirect) {
       return <Redirect to="/login" />;
     } else {
@@ -120,6 +129,7 @@ class PortfolioItem extends Component {
             open={this.state.modalOpen}
             onClose={this.handleClose}
             className="portfolioDialog"
+            fullScreen={fullScreen}
             transition={this.Transition}
           >
             <DialogTitle>
@@ -127,7 +137,7 @@ class PortfolioItem extends Component {
             </DialogTitle>
             <DialogContent className="portflioDialigContent">
               {this.state.loading ? (
-                <div style={{ textAlign: "center", minWidth: 300 }}>
+                <div style={loadingStyle}>
                   <CircularProgress style={{ color: "#fff" }} />
                 </div>
               ) : (
@@ -157,4 +167,8 @@ class PortfolioItem extends Component {
   }
 }
 
-export default withRouter(PortfolioItem);
+PortfolioItem.propTypes = {
+  fullScreen: PropTypes.bool.isRequired
+};
+
+export default withRouter(withMobileDialog()(PortfolioItem));

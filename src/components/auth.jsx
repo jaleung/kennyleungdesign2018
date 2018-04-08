@@ -25,7 +25,7 @@ class AuthBtn extends Component {
       return "";
     } else {
       return (
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid item xs={6} md={3} lg={2}>
           <CSSTransitionGroup
             key="2"
             transitionName="fade"
