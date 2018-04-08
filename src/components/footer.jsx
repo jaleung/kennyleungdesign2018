@@ -35,8 +35,8 @@ export const Footer = () => {
           </a>
         ))}
       </div>
-      <div className="padding-bottom margin-bottom">
-        <small>© Copyright {currentYear} Kenny Leung. All rights reserved.</small>
+      <div className="padding-bottom">
+        <small className="padding-bottom dib">© Copyright {currentYear} Kenny Leung. All rights reserved.</small>
       </div>
     </footer>
   );

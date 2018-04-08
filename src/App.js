@@ -16,13 +16,14 @@ import {Footer} from "./components/footer.jsx"
 
 class App extends Component {
   render() {
-    configureAnchors({ offset: -60, scrollDuration: 300, keepLastAnchorHash: true})
+    console.log(myTheme)
+    configureAnchors({ offset: -60, scrollDuration: 300})
     return (
       <Router>
         <MuiThemeProvider theme={myTheme}>
           <Favicon url="//s3.kennyleung.design/favico.png" />
           <CssBaseline />
-          <div className="App">
+          <div className="App" style={{ backgroundColor: myTheme.palette.primary.main}} >
             <NavBar />
             <div className="page-wrapper">
               <ScrollableAnchor id={"home"}>

@@ -106,7 +106,7 @@ class Contact extends Component {
           <div className="modular-row contact">
             <Typography variant="headline">Contact</Typography>
             <Grid container>
-              <Grid item lg={5} xs={12}>
+              <Grid item md={7} lg={5} xs={12}>
                 <form onSubmit={this.handleSubmit}>
                   <TextField
                     label="Your Name"
