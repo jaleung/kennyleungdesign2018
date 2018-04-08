@@ -92,7 +92,7 @@ class PortfoCard extends Component {
                     />
                   </div>
                   <div className="title">
-                    <Typography color="primary" style={{ margin: "8px 0" }}>
+                    <Typography align="center" color="primary" style={{ margin: "8px 0" }}>
                       {this.props.title}
                     </Typography>
                   </div>

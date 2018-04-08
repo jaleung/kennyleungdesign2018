@@ -8,3 +8,8 @@ export const urlMask = url => {
 export const portfoUrl = url => {
   return url.toLowerCase().replace(/ /g, "-");
 };
+
+
+export const capitalize = function(stringToCap) {
+  return stringToCap.charAt(0).toUpperCase() + stringToCap.slice(1);
+}

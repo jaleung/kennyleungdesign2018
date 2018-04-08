@@ -5,7 +5,7 @@ import Card from "material-ui/Card";
 import { stylePaper } from "./card";
 import Typography from "material-ui/Typography";
 import { CSSTransitionGroup } from "react-transition-group";
-import Emoji from 'react-emoji-render';
+import Emoji from "react-emoji-render";
 
 class AuthBtn extends Component {
   state = {
@@ -24,28 +24,45 @@ class AuthBtn extends Component {
     if (!dataLoaded) {
       return "";
     } else {
-      return <Grid item xs={12} sm={6} md={3}>
-          <CSSTransitionGroup key="2" transitionName="fade" transitionAppear={true} transitionAppearTimeout={500} transitionEnter={false} transitionLeave={false}>
-            <Card onMouseOver={this.hoverOnCard} onMouseOut={this.hoverOffCard} style={stylePaper} color="secondary" elevation={this.state.elevation} className="card">
+      return (
+        <Grid item xs={12} sm={6} md={3}>
+          <CSSTransitionGroup
+            key="2"
+            transitionName="fade"
+            transitionAppear={true}
+            transitionAppearTimeout={500}
+            transitionEnter={false}
+            transitionLeave={false}
+          >
+            <Card
+              onMouseOver={this.hoverOnCard}
+              onMouseOut={this.hoverOffCard}
+              style={stylePaper}
+              color="secondary"
+              elevation={this.state.elevation}
+              className="card"
+            >
               <Link to={loggedIn ? "/logout" : "/login"}>
                 <div>
                   <div className="loginThumbnail">
                     <div className="inner">
-                      <Emoji onlyEmojiClassName="make-emojis-large" text={loggedIn ? ":wave:" : ":closed_lock_with_key:"} />
+                      <Emoji
+                        onlyEmojiClassName="make-emojis-large"
+                        text={loggedIn ? ":wave:" : ":closed_lock_with_key:"}
+                      />
                     </div>
                   </div>
                   <div>
-                    {loggedIn ? <Typography color="primary" style={{ padding: "8px 0" }}>
-                        Bye!
-                      </Typography> : <Typography color="primary" style={{ padding: "8px 0" }}>
-                        Even Cooler Stuffs
-                      </Typography>}
+                    <Typography align="center" color="primary" style={{ padding: "8px 0" }}>
+                      {loggedIn ? "Bye!" : "Even Cooler Stuffs"}
+                    </Typography>
                   </div>
                 </div>
               </Link>
             </Card>
           </CSSTransitionGroup>
-        </Grid>;
+        </Grid>
+      );
     }
   }
 }

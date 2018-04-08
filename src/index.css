@@ -4,7 +4,7 @@ body {
   font-family: sans-serif;
   background: #444;
   /* work mode */
-  filter: grayscale(100%);
+  /* filter: grayscale(100%); */
 }
 
 body,
@@ -96,16 +96,21 @@ a:focus {
 }
 
 .modular-row {
-  padding: 2em 10vw;
+  padding: 5em 10vw 2em;
   display: flex;
   min-height: calc(100vh - 64px);
-  align-items: center;
+  /* align-items: center; */
   position: relative;
+  flex-direction: column;
   margin-top: 64px;
 }
 
 .modular-row.portfolio {
   align-items: flex-start;
+}
+
+.modular-row.contact {
+  min-height: 80vh;
 }
 
 .card {

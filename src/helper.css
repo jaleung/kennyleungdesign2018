@@ -1,0 +1,116 @@
+/*=============================================
+=            Helper Classes            =
+=============================================*/
+
+[posr],
+.posr {
+  position: relative !important;
+}
+
+[db],
+.db {
+  display: block;
+}
+
+[dib],
+.dib {
+  display: inline-block;
+}
+
+[full-width],
+.full-width {
+  width: 100%;
+}
+
+[full-height],
+.full-height {
+  height: 100%;
+}
+
+[max-width],
+.max-width {
+  max-width: 100%;
+}
+
+[vam],
+.vam {
+  vertical-align: middle;
+}
+
+[ovh],
+.ovh {
+  overflow: hidden;
+}
+
+[ovya],
+.ovya {
+  overflow-y: auto;
+}
+
+[ovyh],
+.ovyh {
+  overflow-y: hidden;
+}
+
+.text-right,
+[text-right] {
+  text-align: right;
+}
+
+.text-center,
+[text-center] {
+  text-align: center;
+}
+
+.line-height-1x,
+[line-height-1x] {
+  line-height: 1;
+}
+
+.padding, [padding] {
+  padding: 16px;
+}
+
+.padding-half, [padding-half] {
+  padding: 8px;
+}
+
+.padding-top, [padding-top] {
+  padding-top: 16px;
+}
+
+.padding-bottom, [padding-bottom] {
+  padding-bottom: 16px;
+}
+
+.padding-left, [padding-left] {
+  padding-left: 16px;
+}
+
+.padding-right, [padding-right] {
+  padding-right: 16px;
+}
+
+.margin, [margin] {
+  margin: 16px;
+}
+
+.margin-half, [margin-half] {
+  margin: 8px;
+}
+
+.margin-top, [margin-top] {
+  margin-top: 16px;
+}
+
+.margin-bottom, [margin-bottom] {
+  margin-bottom: 16px;
+}
+
+.margin-left, [margin-left] {
+  margin-left: 16px;
+}
+
+.margin-right, [margin-right] {
+  margin-right: 16px;
+}

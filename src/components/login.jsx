@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Dialog, {
-  DialogActions,
   DialogContent,
   DialogTitle
 } from "material-ui/Dialog";

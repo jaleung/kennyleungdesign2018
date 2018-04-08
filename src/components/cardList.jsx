@@ -57,10 +57,10 @@ class CardList extends Component {
       <ScrollableAnchor id={"portfolio"}>
         <div className="modular-row portfolio">
           <Grid container alignItems="center" style={style}>
+            <AuthBtn loaded={this.state.loaded} />
             {this.state.cards.map(card => (
               <PortfoCard key={card.uuid} {...card} />
             ))}
-            <AuthBtn loaded={this.state.loaded} />
           </Grid>
         </div>
       </ScrollableAnchor>

@@ -5,10 +5,7 @@ import Typography from "material-ui/Typography";
 import Grid from "material-ui/Grid";
 import Button from "material-ui/Button";
 import { Link } from "react-router-dom";
-
-const capitalize = function(stringToCap) {
-  return stringToCap.charAt(0).toUpperCase() + stringToCap.slice(1);
-}
+import {capitalize} from "./global";
 
 const navItems = ['home', 'about', 'portfolio', 'contact']
 
