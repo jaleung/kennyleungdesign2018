@@ -16,5 +16,5 @@ export const capitalize = function(stringToCap) {
   return stringToCap.charAt(0).toUpperCase() + stringToCap.slice(1);
 }
 
-export const SM = props => <Response {...props} maxWidth={959}/>
-export const MD = props => <Response {...props} minWidth={960}/>
+export const SM = props => <Responsive {...props} maxWidth={959}/>
+export const MD = props => <Responsive {...props} minWidth={960}/>
