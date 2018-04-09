@@ -6,8 +6,18 @@ import Grid from "material-ui/Grid";
 import Button from "material-ui/Button";
 import { Link } from "react-router-dom";
 import { capitalize, SM, MD } from "./global";
+import Tabs, { Tab } from "material-ui/Tabs";
+import HomeIcon from "@material-ui/icons/Home";
+import FaceIcon from "@material-ui/icons/Face";
+import WorkIcon from "@material-ui/icons/Work";
+import ChatIcon from "@material-ui/icons/ChatBubble";
 
-const navItems = ["home", "about", "portfolio", "contact"];
+const navItems = [
+  { name: "home", icon: <HomeIcon /> },
+  { name: "about", icon: <FaceIcon /> },
+  { name: "portfolio", icon: <WorkIcon/>},
+  { name: "contact", icon: <ChatIcon/>}
+];
 
 const NavBar = () => {
   return (
@@ -24,11 +34,13 @@ const NavBar = () => {
           <Grid item xs={12} md={8} xl={9} style={{ textAlign: "right" }}>
             <MD>
               {navItems.map(navItem => (
-                <Button key={navItem} href={"#" + navItem}>
-                  {capitalize(navItem)}
+                <Button key={navItem.name} href={"#" + navItem.name}>
+                  {capitalize(navItem.name)}
                 </Button>
               ))}
             </MD>
+
+            <SM />
           </Grid>
         </Grid>
       </Toolbar>
