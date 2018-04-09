@@ -5,7 +5,8 @@ import Card from "material-ui/Card";
 import { stylePaper } from "./card";
 import Typography from "material-ui/Typography";
 import { CSSTransitionGroup } from "react-transition-group";
-import Emoji from "react-emoji-render";
+import Icon from "./icon";
+import blue from "material-ui/colors/blue"
 
 class AuthBtn extends Component {
   state = {
@@ -46,10 +47,7 @@ class AuthBtn extends Component {
                 <div>
                   <div className="loginThumbnail">
                     <div className="inner">
-                      <Emoji
-                        onlyEmojiClassName="make-emojis-large"
-                        text={loggedIn ? ":wave:" : ":closed_lock_with_key:"}
-                      />
+                      <Icon name={ loggedIn ? 'logout-1' : 'lock'} size="5" style={{ color: blue[400]}}/>
                     </div>
                   </div>
                   <div>

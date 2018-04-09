@@ -5,6 +5,13 @@ const Icon = (props) => {
   let name = props.name
   let size
   let rotate
+  let color
+
+  if (props.style === undefined) {
+    color = 'inherit'
+  } else {
+    color = props.style.color
+  }
 
   if (props.size === null) {
     size = '1em'
@@ -19,7 +26,8 @@ const Icon = (props) => {
   const style = {
     display: 'inline-block',
     fontSize: size,
-    transform: (rotate ? 'rotate(180deg)' : 'none' )
+    transform: (rotate ? 'rotate(180deg)' : 'none' ),
+    color: color
   }
 
   return (

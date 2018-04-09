@@ -28,7 +28,6 @@ const placeholderImgStyle = {
 const loadingStyle = {
   textAlign: "center",
   minWidth: 150,
-  height: "60vh",
   display: "flex",
   alignItems: "center",
   justifyContent: "center"
@@ -137,7 +136,7 @@ class PortfolioItem extends Component {
             </DialogTitle>
             <DialogContent className="portflioDialigContent">
               {this.state.loading ? (
-                <div style={loadingStyle}>
+                <div style={loadingStyle} className="modalSpinnerContainer">
                   <CircularProgress style={{ color: "#fff" }} />
                 </div>
               ) : (
@@ -154,7 +153,7 @@ class PortfolioItem extends Component {
                       replace: domNode => transHTML(domNode)
                     })}
                   </div>
-                </CSSTransitionGroup>
+                 </CSSTransitionGroup>
               )}
             </DialogContent>
             <DialogActions>

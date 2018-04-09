@@ -97,7 +97,7 @@ a:focus {
 }
 
 .modular-row {
-  padding: 5em 10vw 2em;
+  padding: 5em 16px 2em;
   display: flex;
   min-height: calc(100vh - 64px);
   position: relative;
@@ -124,4 +124,18 @@ a:focus {
 .card:hover {
   transform: scale(1.03);
   transition: all 100ms ease-in-out;
+}
+
+.modalSpinnerContainer {
+  height: 60vh;
+}
+
+@media screen and (min-width: 960px) {
+  .modalSpinnerContainer {
+    height: auto;
+  }
+
+  .modular-row {
+    padding: 5em 10vw 2em;
+  }
 }
