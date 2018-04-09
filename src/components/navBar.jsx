@@ -11,6 +11,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import FaceIcon from "@material-ui/icons/Face";
 import WorkIcon from "@material-ui/icons/Work";
 import ChatIcon from "@material-ui/icons/ChatBubble";
+import blue from "material-ui/colors/blue"
 
 const navItems = [
   { name: "home", icon: <HomeIcon /> },
@@ -57,11 +58,11 @@ class NavBar extends Component {
                   value={this.state.value}
                   onChange={this.handleChange}
                   fullWidth
-                  indicatorColor="primary"
+                  indicatorColor={blue[500]}
                   textColor="primary"
                 >
                   {navItems.map(navItem => (
-                    <Tab icon={navItem.icon} href={"#" + navItem.name} />
+                    <Tab key={navItem.name} icon={navItem.icon} href={"#" + navItem.name} />
                   ))}
                 </Tabs>
               </SM>
