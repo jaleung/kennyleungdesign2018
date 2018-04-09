@@ -9,7 +9,9 @@ import Dialog, {
 } from "material-ui/Dialog";
 import { withRouter } from "react-router-dom";
 import Button from "material-ui/Button";
-import Grow from "material-ui/transitions/Grow";
+// import Grow from "material-ui/transitions/Grow";
+import Fade from 'material-ui/transitions/Fade';
+// import Zoom from 'material-ui/transitions/Zoom';
 import { CircularProgress } from "material-ui";
 import Parser from "html-react-parser";
 import Img from "react-image";
@@ -112,7 +114,9 @@ class PortfolioItem extends Component {
   }
 
   Transition(props) {
-    return <Grow key={props.key} in {...props} />;
+    // return <Grow key={props.key} in {...props} timeout={{ enter: 500, exit: 500 }} />;
+    // return <Zoom key={props.key} in {...props} timeout={{ enter: 500, exit: 500 }} />;
+  return <Fade key={props.key} in {...props} timeout={{ enter: 400, exit: 300 }}/>;
   }
 
   render() {

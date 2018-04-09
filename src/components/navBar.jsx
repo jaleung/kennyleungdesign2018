@@ -11,7 +11,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import FaceIcon from "@material-ui/icons/Face";
 import WorkIcon from "@material-ui/icons/Work";
 import ChatIcon from "@material-ui/icons/ChatBubble";
-import blue from "material-ui/colors/blue"
+import blue from "material-ui/colors/blue";
 
 const navItems = [
   { name: "home", icon: <HomeIcon /> },
@@ -35,14 +35,27 @@ class NavBar extends Component {
         <Toolbar>
           <Grid container spacing={0} alignItems="center">
             <Grid item xs={12} md={4} xl={3} style={{ textAlign: "left" }}>
-              <Typography variant="title" color="inherit">
-                <Link
-                  to="/"
-                  className="padding-top-half padding-bottom-half dib"
-                >
-                  Kenny Leung | UX Developer
-                </Link>
-              </Typography>
+              <SM>
+                {matches => {
+                  let titleVariant;
+                  if (matches) {
+                    titleVariant = "subheading";
+                  } else {
+                    titleVariant = "title";
+                  }
+
+                  return (
+                    <Typography variant={titleVariant} color="inherit">
+                      <Link
+                        to="/"
+                        className="padding-top-half padding-bottom-half dib"
+                      >
+                        Kenny Leung | UX Developer
+                      </Link>
+                    </Typography>
+                  );
+                }}
+              </SM>
             </Grid>
             <Grid item xs={12} md={8} xl={9} style={{ textAlign: "right" }}>
               <MD>
@@ -58,11 +71,15 @@ class NavBar extends Component {
                   value={this.state.value}
                   onChange={this.handleChange}
                   fullWidth
-                  indicatorColor={blue[500]}
-                  textColor="primary"
+                  indicatorColor={blue[200]}
+                  textColor="secondary"
                 >
                   {navItems.map(navItem => (
-                    <Tab key={navItem.name} icon={navItem.icon} href={"#" + navItem.name} />
+                    <Tab
+                      key={navItem.name}
+                      icon={navItem.icon}
+                      href={"#" + navItem.name}
+                    />
                   ))}
                 </Tabs>
               </SM>

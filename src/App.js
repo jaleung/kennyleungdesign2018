@@ -8,35 +8,35 @@ import CardList from "./components/cardList.jsx";
 import PortfolioItem from "./components/portfolioItem.jsx";
 import NavBar from "./components/navBar.jsx";
 import CssBaseline from "material-ui/CssBaseline";
-import ScrollableAnchor, { configureAnchors } from "react-scrollable-anchor";
+import { configureAnchors } from "react-scrollable-anchor";
 import Contact from "./components/contact";
 import Favicon from "react-favicon";
 // import Icon from "./components/icon.jsx"
-import {Footer} from "./components/footer.jsx"
-import About from "./components/about.jsx"
+import { Footer } from "./components/footer.jsx";
+import About from "./components/about.jsx";
+import { Home } from "./components/home.jsx";
 
 class App extends Component {
   componentDidMount() {
-    document.title = "Kenny Leung | UX Developer"
+    document.title = "Kenny Leung | UX Developer";
   }
 
   render() {
-    console.log(myTheme)
-    configureAnchors({ offset: -60, scrollDuration: 300})
+    console.log(myTheme);
+    configureAnchors({ offset: -60, scrollDuration: 300 });
     return (
       <Router>
         <MuiThemeProvider theme={myTheme}>
           <Favicon url="//s3.kennyleung.design/favico.png" />
           <CssBaseline />
-          <div className="App" style={{ backgroundColor: myTheme.palette.primary.main}} >
+          <div
+            className="App"
+            style={{ backgroundColor: myTheme.palette.primary.main }}
+          >
             <NavBar />
             <div className="page-wrapper">
-              <ScrollableAnchor id={"home"}>
-                <div className="modular-row">
-                Home
-                </div>
-              </ScrollableAnchor>
-                <About/>
+              <Home />
+              <About />
               <Route path="/" component={CardList} />
               <Route path="/logout" component={Logout} />
               <Route path="/login" component={Login} />
@@ -45,7 +45,7 @@ class App extends Component {
                 component={PortfolioItem}
               />
               <Contact />
-              <Footer/>
+              <Footer />
             </div>
           </div>
         </MuiThemeProvider>
