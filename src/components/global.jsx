@@ -1,5 +1,5 @@
 
-export const baseUrl = "https://35.229.37.11";
+export const baseUrl = "https://api.kennyleung.design";
 
 export const urlMask = url => {
   return url.replace("s3-ap-southeast-1.amazonaws.com/", "");

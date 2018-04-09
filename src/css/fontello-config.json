@@ -75,6 +75,18 @@
       "search": [
         "telegram"
       ]
+    },
+    {
+      "uid": "47e9e56d2b5abe839bcf1e014d643dea",
+      "css": "lock",
+      "code": 59393,
+      "src": "linecons"
+    },
+    {
+      "uid": "2d76f2c8d13be40694ecadfea7fb83c3",
+      "css": "logout",
+      "code": 59394,
+      "src": "entypo"
     }
   ]
 }
