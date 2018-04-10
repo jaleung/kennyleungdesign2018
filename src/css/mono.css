@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,700');
+@import url('//fonts.googleapis.com/css?family=Roboto+Mono:400,700');
 
 .card-content {
   font-family: "Roboto Mono",courier;
@@ -42,7 +42,7 @@
 
 .card-content p {
   margin: 0;
-  font-size: 4.3vw;
+  font-size: 5vw;
   line-height: 1.5
 }
 
