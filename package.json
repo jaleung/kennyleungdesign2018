@@ -22,7 +22,11 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
     "react-scrollable-anchor": "^0.6.1",
-    "react-transition-group": "1.2.1"
+    "react-transition-group": "1.2.1",
+    "react-typewrite": "^2.1.0",
+    "react-typist": "^2.0.4",
+    "typeit": "^5.6.1",
+    "uuid": "^3.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
