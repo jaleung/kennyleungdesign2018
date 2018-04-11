@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Dialog, {
-  DialogContent,
-  DialogTitle
-} from "material-ui/Dialog";
+import Dialog, { DialogContent, DialogTitle } from "material-ui/Dialog";
 import { Redirect } from "react-router-dom";
 import Grow from "material-ui/transitions/Grow";
 import { baseUrl } from "./global.jsx";
 import TextField from "material-ui/TextField";
 import Button from "material-ui/Button";
 import Emoji from "react-emoji-render";
+import { CircularProgress } from "material-ui";
 
 class Login extends Component {
   constructor(props) {
@@ -21,7 +19,8 @@ class Login extends Component {
       success: "",
       error: "",
       redirect: false,
-      modalOpen: true
+      modalOpen: true,
+      sending: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -46,10 +45,17 @@ class Login extends Component {
     });
   }
 
+  toggleSend() {
+    this.setState({
+      sending: !this.state.sending
+    });
+  }
+
   handleSubmit(event) {
     event.preventDefault();
 
     var self = this;
+    self.toggleSend();
 
     axios
       .post(`${baseUrl}/user/login?_format=json`, {
@@ -61,7 +67,7 @@ class Login extends Component {
           success: "Login successful",
           error: ""
         });
-
+        self.toggleSend();
         localStorage.setItem("username", response.data.current_user.name);
         localStorage.setItem("uid", response.data.current_user.uid);
         localStorage.setItem("csrf_token", response.data.csrf_token);
@@ -75,6 +81,7 @@ class Login extends Component {
         self.forceUpdate();
       })
       .catch(function(error) {
+        self.toggleSend();
         var errorResponse = error.response.data.message;
         errorResponse = errorResponse.replace(/(?:\r\n|\r|\n)/g, "<br />");
         self.setState({
@@ -102,8 +109,7 @@ class Login extends Component {
         transition={this.Transition}
       >
         <DialogTitle>
-          Tell me your little secret{" "}
-          <Emoji text=":speak_no_evil:" />
+          Tell me your little secret <Emoji text=":speak_no_evil:" />
         </DialogTitle>
         <DialogContent>
           <form onSubmit={this.handleSubmit} autoComplete="off">
@@ -117,7 +123,17 @@ class Login extends Component {
               type="password"
               placeholder="Enter password"
             />
-            <Button variant="raised" size="medium" style={{ marginTop: 24 }} fullWidth type="submit"> Go! </Button>
+            <Button
+              variant="raised"
+              size="medium"
+              style={{ marginTop: 24 }}
+              fullWidth
+              type="submit"
+            >
+              {this.state.sending ? (
+                      <CircularProgress size={20} />
+              ):("Go")}
+            </Button>
             <div>
               <p>{this.state.success}</p>
               <p dangerouslySetInnerHTML={{ __html: this.state.error }} />
