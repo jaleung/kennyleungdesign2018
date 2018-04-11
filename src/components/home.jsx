@@ -9,7 +9,6 @@ import uuid from "uuid/v4"
 
 
 export const Home = props => {
-  console.log('ID!!:', uuid())
   return <ScrollableAnchor id={"home"}>
       <div className="modular-row" style={{ justifyContent: "center" }}>
         <Typist className="card-content" avgTypingDelay={30} cursor={{ hideWhenDone: true }}>

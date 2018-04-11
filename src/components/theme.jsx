@@ -3,7 +3,7 @@ import blue from "material-ui/colors/blue"
 
 const myTheme = createMuiTheme({
   palette: {
-    type: 'dark',
+    type: "dark",
     primary: {
       main: "#444444"
     },
@@ -13,6 +13,10 @@ const myTheme = createMuiTheme({
     link: {
       main: blue[500]
     }
+  },
+  typography: {
+    fontFamily: "'Fira Sans', sans-serif",
+    fontSize: 16
   }
 });
 
