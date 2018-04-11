@@ -50,7 +50,7 @@ class AuthBtn extends Component {
                       <Icon name={ loggedIn ? 'logout-1' : 'lock'} size="5" style={{ color: blue[400]}}/>
                     </div>
                   </div>
-                  <div>
+                  <div className="title">
                     <Typography align="center" color="primary" style={{ padding: "8px 0" }}>
                       {loggedIn ? "Bye!" : "Even Cooler Stuffs"}
                     </Typography>

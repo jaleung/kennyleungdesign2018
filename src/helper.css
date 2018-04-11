@@ -17,6 +17,11 @@
   display: inline-block;
 }
 
+[df],
+.df {
+  display: flex;
+}
+
 [full-width],
 .full-width {
   width: 100%;

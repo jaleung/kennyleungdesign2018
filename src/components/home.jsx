@@ -12,7 +12,7 @@ export const Home = props => {
   console.log('ID!!:', uuid())
   return <ScrollableAnchor id={"home"}>
       <div className="modular-row" style={{ justifyContent: "center" }}>
-        <Typist className="card-content" avgTypingDelay={50} cursor={{ hideWhenDone: true }}>
+        <Typist className="card-content" avgTypingDelay={30} cursor={{ hideWhenDone: true }}>
           <Typist.Delay ms={500} />
           <p key={uuid()}>
             <span className="c-green">#kenny</span>
@@ -26,7 +26,7 @@ export const Home = props => {
             </span>:<span className="c-grey">·</span>
             <span className="c-orange">$ui-ux-designer</span>;
             <Typist.Backspace count={10} delay={200} />
-            <span className="c-orange">-developer;</span>
+            <span className="c-orange">-developer</span>;
           </p>
           <br />
           <p key={uuid()}>
@@ -34,8 +34,8 @@ export const Home = props => {
             <span className="c-blue">
               display
             </span>:<span className="c-grey">·</span>
-            <span className="c-orange">$handsome</span>;
-            <Typist.Backspace count={9} delay={200} />
+            <span className="c-orange">$nerd</span>;
+            <Typist.Backspace count={5} delay={200} />
             <span className="c-orange">geek</span>;
           </p>
           <br />
