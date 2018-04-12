@@ -19,8 +19,7 @@ export const Home = props => {
             <span className="c-blue">
               position
             </span><span>:</span><span className="c-grey">·</span>
-            <span className="c-orange">$ui-ux-designer</span><span>;</span>
-            <span className="c-orange">-developer</span><span>;</span>
+            <span className="c-orange">$ui-ux-developer</span><span>;</span>
           </p>
           <br />
           <p>
@@ -28,8 +27,7 @@ export const Home = props => {
             <span className="c-blue">
               display
             </span><span>:</span><span className="c-grey">·</span>
-            <span className="c-orange">$nerd</span><span>;</span>
-            <span className="c-orange">geek</span><span>;</span>
+            <span className="c-orange">$geek</span><span>;</span>
           </p>
           <br />
           <div className="extras">

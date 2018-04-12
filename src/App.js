@@ -21,8 +21,7 @@ class App extends Component {
   componentDidMount() {
     document.title = "Kenny Leung | UX Developer";
     const typeit = new TypeIt('.type-it', {
-      speed: 10,
-      lifeLike: true
+      speed: 30,
     });
   }
 
