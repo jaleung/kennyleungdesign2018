@@ -8,6 +8,7 @@ import { CircularProgress } from "material-ui/Progress";
 import { CSSTransitionGroup } from "react-transition-group";
 import LazyLoad from "react-lazyload";
 import Img from "react-image";
+import { MD } from "./global";
 
 export const stylePaper = {
   background: "#fff",
@@ -91,11 +92,17 @@ class PortfoCard extends Component {
                       loader={<LoadContainer />}
                     />
                   </div>
-                  <div className="title">
-                    <Typography align="center" color="primary" style={{ margin: "8px 0" }}>
-                      {this.props.title}
-                    </Typography>
-                  </div>
+                  <MD>
+                    <div className="title">
+                      <Typography
+                        align="center"
+                        color="primary"
+                        style={{ margin: "8px 0" }}
+                      >
+                        {this.props.title}
+                      </Typography>
+                    </div>
+                  </MD>
                 </div>
               </Link>
             </Card>

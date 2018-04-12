@@ -6,7 +6,8 @@ import { stylePaper } from "./card";
 import Typography from "material-ui/Typography";
 import { CSSTransitionGroup } from "react-transition-group";
 import Icon from "./icon";
-import blue from "material-ui/colors/blue"
+import blue from "material-ui/colors/blue";
+import { MD } from "./global";
 
 class AuthBtn extends Component {
   state = {
@@ -47,14 +48,24 @@ class AuthBtn extends Component {
                 <div>
                   <div className="loginThumbnail">
                     <div className="inner">
-                      <Icon name={ loggedIn ? 'logout-1' : 'lock'} size="5" style={{ color: blue[400]}}/>
+                      <Icon
+                        name={loggedIn ? "logout-1" : "lock"}
+                        size="5"
+                        style={{ color: blue[400] }}
+                      />
                     </div>
                   </div>
-                  <div className="title">
-                    <Typography align="center" color="primary" style={{ padding: "8px 0" }}>
-                      {loggedIn ? "Bye!" : "Even Cooler Stuffs"}
-                    </Typography>
-                  </div>
+                  <MD>
+                    <div className="title">
+                      <Typography
+                        align="center"
+                        color="primary"
+                        style={{ padding: "8px 0" }}
+                      >
+                        {loggedIn ? "Bye!" : "Even Cooler Stuffs"}
+                      </Typography>
+                    </div>
+                  </MD>
                 </div>
               </Link>
             </Card>

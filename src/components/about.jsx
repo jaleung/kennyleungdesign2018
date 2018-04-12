@@ -8,9 +8,6 @@ import Scroller from "./scrollToPage";
 import { SM } from "./global";
 
 const style = {
-  intro: {
-    fontSize: "1.5em"
-  },
   link: {
     color: blue[200]
   }
@@ -25,6 +22,7 @@ const bio = {
 
 const About = props => {
   let h1Variant;
+  let descVariant;
   return (
     <ScrollableAnchor id={"about"}>
       <div className="modular-row about">
@@ -33,12 +31,15 @@ const About = props => {
             <SM>
               {matches => {
                 if (matches) {
-                  h1Variant = "display1";
+                  h1Variant = "headline";
+                  descVariant = "title";
                 } else {
-                  h1Variant = "display3";
+                  h1Variant = "display2";
+                  descVariant = "headline";
                 }
-
+                console.log(descVariant)
                 return (
+                  <div>
                   <Typography
                     variant={h1Variant}
                     gutterBottom
@@ -46,10 +47,8 @@ const About = props => {
                   >
                     <em>Hi, this is Kenny Leung</em>
                   </Typography>
-                );
-              }}
-            </SM>
-            <Typography variant="subheading" className={props.classes.intro}>
+
+            <Typography variant={descVariant}>
               I am a UI/UX developer based in Hong Kong. I work at{" "}
               <a
                 target="_blank"
@@ -60,6 +59,10 @@ const About = props => {
               </a>{" "}
               where I craft user experience and get my hands dirty with code.
             </Typography>
+                  </div>
+                );
+              }}
+            </SM>
           </Grid>
         </Grid>
         <Scroller to="portfolio" />

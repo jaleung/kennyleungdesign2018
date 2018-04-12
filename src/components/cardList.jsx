@@ -5,6 +5,7 @@ import PortfoCard from "./card";
 import Grid from "material-ui/Grid";
 import AuthBtn from "./auth";
 import ScrollableAnchor from "react-scrollable-anchor";
+import Typography from "material-ui/Typography";
 
 class CardList extends Component {
   state = {
@@ -50,6 +51,9 @@ class CardList extends Component {
     return (
       <ScrollableAnchor id={"portfolio"}>
         <div className="modular-row portfolio">
+          <Typography variant="headline" gutterBottom>
+            Portfolio
+          </Typography>
           <Grid container alignItems="center">
             <AuthBtn loaded={this.state.loaded} />
             {this.state.cards.map(card => (

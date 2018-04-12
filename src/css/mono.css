@@ -43,18 +43,18 @@
 .card-content .ti-cursor,
 .card-content p {
   margin: 0;
-  font-size: 5vw!important;
+  font-size: 3.5vw!important;
   line-height: 1.5;
   display: inline;
 }
 
-@media (min-width: 480px) {
+/* @media (min-width: 480px) {
   .card-content span,
   .card-content .ti-cursor,
   .card-content p {
     font-size: 3vw!important;
   }
-}
+} */
 
 @media (min-width: 1024px) {
   .card-content span,
@@ -64,12 +64,10 @@
   }
 }
 
-.card-content .extras {
+/* .card-content .extras {
   display: none;
 }
 
-@media (min-width: 480px) {
   .card-content .extras {
     display: inline;
-  }
-}
+} */

@@ -24,7 +24,8 @@ const placeholderImgStyle = {
   minWidth: 300,
   paddingBottom: "56.25%",
   background: "#f1f1f1",
-  position: "relative"
+  position: "relative",
+  margin: "8px auto"
 };
 
 const loadingStyle = {
