@@ -3,15 +3,13 @@ import ScrollableAnchor from "react-scrollable-anchor";
 import "../css/mono.css";
 import Scroller from "./scrollToPage";
 // import TypeIt from 'typeit';
-import Typist from 'react-typist';
-import "../css/typist.css";
-
+// import Typist from 'react-typist';
+import TypeWriter from 'react-typewriter';
 
 export const Home = props => {
   return <ScrollableAnchor id={"home"}>
       <div className="modular-row" style={{ justifyContent: "center" }}>
-        <Typist className="card-content" avgTypingDelay={30} cursor={{ hideWhenDone: true }}>
-          <Typist.Delay ms={500} />
+        <div className="type-it card-content">
           <p>
             <span className="c-green">#kenny</span><span className="c-grey">·</span><span>&#123;</span>
           </p>
@@ -22,7 +20,6 @@ export const Home = props => {
               position
             </span><span>:</span><span className="c-grey">·</span>
             <span className="c-orange">$ui-ux-designer</span><span>;</span>
-            <Typist.Backspace count={10} delay={200} />
             <span className="c-orange">-developer</span><span>;</span>
           </p>
           <br />
@@ -32,7 +29,6 @@ export const Home = props => {
               display
             </span><span>:</span><span className="c-grey">·</span>
             <span className="c-orange">$nerd</span><span>;</span>
-            <Typist.Backspace count={5} delay={200} />
             <span className="c-orange">geek</span><span>;</span>
           </p>
           <br />
@@ -97,7 +93,7 @@ export const Home = props => {
             <br />
           </div>
           <p>}</p>
-        </Typist>
+        </div>
         <Scroller to="about" />
       </div>
     </ScrollableAnchor>;
