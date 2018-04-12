@@ -51,11 +51,17 @@ class CardList extends Component {
     return (
       <ScrollableAnchor id={"portfolio"}>
         <div className="modular-row portfolio">
+          <Grid container spacing={24}>
+            <Grid item xs={6}>
           <Typography variant="headline" gutterBottom>
             Portfolio
           </Typography>
-          <Grid container alignItems="center">
+            </Grid>
+            <Grid item xs={6} style={{ textAlign: "right" }}>
             <AuthBtn loaded={this.state.loaded} />
+            </Grid>
+          </Grid>
+          <Grid container alignItems="center">
             {this.state.cards.map(card => (
               <PortfoCard key={card.uuid} {...card} />
             ))}

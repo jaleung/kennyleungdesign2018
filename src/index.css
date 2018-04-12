@@ -44,6 +44,11 @@ a:focus {
   padding-top: 16px;
 }
 
+.portflioDialigContent iframe {
+  max-width: 100%!important;
+  height: auto!important;
+}
+
 .portflioDialigContent::-webkit-scrollbar {
   width: 10px;
   background: #424242;
