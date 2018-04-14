@@ -20,6 +20,12 @@ import TypeIt from 'typeit';
 class App extends Component {
   componentDidMount() {
     document.title = "Kenny Leung | UX Developer";
+
+    const meta = document.createElement("meta");
+    meta.name = "description";
+    meta.content = "Kenny Leung, UX Developer based in Hong Kong";
+
+    document.head.appendChild(meta);
     const typeit = new TypeIt('.type-it', {
       speed: 15,
     });
