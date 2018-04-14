@@ -37,7 +37,6 @@ const About = props => {
                   h1Variant = "display2";
                   descVariant = "headline";
                 }
-                console.log(descVariant)
                 return (
                   <div>
                   <Typography

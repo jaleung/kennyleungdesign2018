@@ -32,7 +32,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && cp src/favico.png build/ && rm build/favicon.ico",
+    "build": "react-scripts build && cp src/favico.png build/ && rm build/favicon.ico && rm -rf build/**/*.map",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy-dev": "gsutil rm gs://test.jaleung.net/** && gsutil -m cp -r build/* gs://test.jaleung.net && gsutil iam ch allUsers:objectViewer gs://test.jaleung.net",

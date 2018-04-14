@@ -32,7 +32,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(myTheme);
+    // console.log(myTheme);
     configureAnchors({ offset: -60, scrollDuration: 300 });
     return (
       <Router>
