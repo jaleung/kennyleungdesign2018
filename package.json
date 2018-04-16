@@ -32,7 +32,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && cp src/favico.png build/ && rm build/favicon.ico && rm -rf build/static/**/*.map",
+    "build": "react-scripts build && cp src/favico.png build/ && rm build/favicon.ico && rm -rf build/static/**/*.map && sed -i -e 's/React App/Kenny Leung, UX Developer based in Hong Kong/g' build/index.html",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy-dev": "gsutil rm gs://test.jaleung.net/** && gsutil -m cp -r build/* gs://test.jaleung.net && gsutil iam ch allUsers:objectViewer gs://test.jaleung.net",
