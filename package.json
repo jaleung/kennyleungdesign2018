@@ -8,6 +8,7 @@
     "axios": "^0.18.0",
     "html-react-parser": "^0.4.3",
     "material-ui": "^1.0.0-beta.40",
+    "now": "^11.4.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-emoji-render": "^0.4.4",

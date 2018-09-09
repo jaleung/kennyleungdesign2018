@@ -6,7 +6,6 @@ import Card from "material-ui/Card";
 import Typography from "material-ui/Typography";
 import { CircularProgress } from "material-ui/Progress";
 import { CSSTransitionGroup } from "react-transition-group";
-import LazyLoad from "react-lazyload";
 import Img from "react-image";
 import { MD } from "./global";
 
@@ -64,50 +63,47 @@ class PortfoCard extends Component {
   render() {
     return (
       <Grid item xs={6} md={3} lg={2}>
-        <LazyLoad>
-          <CSSTransitionGroup
-            key="2"
-            transitionName="fade"
-            transitionAppear
-            transitionAppearTimeout={500}
-            transitionEnter={false}
-            transitionLeave={false}
+        <CSSTransitionGroup
+          key="2"
+          transitionName="fade"
+          transitionAppear
+          transitionAppearTimeout={500}
+          transitionEnter={false}
+          transitionLeave={false}
+        >
+          <Card
+            onMouseOver={this.hoverOnCard}
+            onMouseOut={this.hoverOffCard}
+            color="secondary"
+            style={stylePaper}
+            className="card"
+            elevation={this.state.elevation}
           >
-            <Card
-              onMouseOver={this.hoverOnCard}
-              onMouseOut={this.hoverOffCard}
-              color="secondary"
-              style={stylePaper}
-              className="card"
-              elevation={this.state.elevation}
-            >
-              <Link to={`/portfolio/${portfoUrl(this.props.title)}`}>
-                <div>
-                  <div className="thumbnail">
-                    <Img
-                      style={styleImg}
-                      src={urlMask(this.props.field_thumbnail)}
-                      // src="https://wallpaperbrowse.com/media/images/303836.jpg"
-                      alt={this.props.title}
-                      loader={<LoadContainer />}
-                    />
-                  </div>
-                  <MD>
-                    <div className="title">
-                      <Typography
-                        align="center"
-                        color="primary"
-                        style={{ margin: "8px 0" }}
-                      >
-                        {this.props.title}
-                      </Typography>
-                    </div>
-                  </MD>
+            <Link to={`/portfolio/${portfoUrl(this.props.title)}`}>
+              <div>
+                <div className="thumbnail">
+                  <Img
+                    style={styleImg}
+                    src={urlMask(this.props.field_thumbnail)}
+                    alt={this.props.title}
+                    loader={<LoadContainer />}
+                  />
                 </div>
-              </Link>
-            </Card>
-          </CSSTransitionGroup>
-        </LazyLoad>
+                <MD>
+                  <div className="title">
+                    <Typography
+                      align="center"
+                      color="primary"
+                      style={{ margin: "8px 0" }}
+                    >
+                      {this.props.title}
+                    </Typography>
+                  </div>
+                </MD>
+              </div>
+            </Link>
+          </Card>
+        </CSSTransitionGroup>
       </Grid>
     );
   }

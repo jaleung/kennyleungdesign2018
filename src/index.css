@@ -46,7 +46,6 @@ a:focus {
 
 .portflioDialigContent iframe {
   max-width: 100%!important;
-  height: auto!important;
 }
 
 .portflioDialigContent::-webkit-scrollbar {
