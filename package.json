@@ -29,14 +29,15 @@
     "react-typing-animation": "^1.3.3",
     "react-typist": "^2.0.4",
     "typeit": "^5.6.1",
-    "uuid": "^3.2.1"
+    "uuid": "^3.2.1",
+    "xmlbuilder": "^10.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && cp src/favico.png build/ && rm build/favicon.ico && rm -rf build/static/**/*.map && sed -i -e 's/React App/Kenny Leung, UX Developer based in Hong Kong/g' build/index.html",
+    "build": "react-scripts build && node sitemapgen.js && cp src/favico.png build/ && rm build/favicon.ico && rm -rf build/static/**/*.map && sed -i -e 's/React App/Kenny Leung, UX Developer based in Hong Kong/g' build/index.html",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy-dev": "gsutil rm gs://test.jaleung.net/** && gsutil -m cp -r build/* gs://test.jaleung.net && gsutil iam ch allUsers:objectViewer gs://test.jaleung.net",
-    "deploy-prod": "gsutil rm gs://kennyleung.design/** && gsutil -m cp -r build/* gs://kennyleung.design && gsutil iam ch allUsers:objectViewer gs://kennyleung.design"
+    "deploy-dev": "node sitemapgen.js && gsutil rm gs://test.jaleung.net/** && gsutil -m cp -r build/* gs://test.jaleung.net && gsutil iam ch allUsers:objectViewer gs://test.jaleung.net",
+    "deploy-prod": "node sitemapgen.js && gsutil rm gs://kennyleung.design/** && gsutil -m cp -r build/* gs://kennyleung.design && gsutil iam ch allUsers:objectViewer gs://kennyleung.design"
   }
 }
