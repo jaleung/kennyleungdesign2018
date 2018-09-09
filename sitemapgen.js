@@ -10,8 +10,8 @@ const baseApiUrl = 'https://api.kennyleung.design/portfolios?_format=json';
 const baseUrl = 'https://kennyleung.design/';
 const portfoItemUrl = baseUrl + 'portfolio/';
 const portfoUrl = url => url.toLowerCase().replace(/ /g, "-"); 
-var date = new Date();
-const lastMod  = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
+const lastMod  = new Date().toISOString();
+console.log(lastMod);
 
 const addUrl = (item, url , modDate = lastMod ,freq = 'monthly', priority = 1) => {
   return item.ele('url')
