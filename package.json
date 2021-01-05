@@ -5,7 +5,7 @@
   "dependencies": {
     "@material-ui/icons": "^1.0.0-beta.42",
     "@trainline/react-skeletor": "^1.0.2",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "html-react-parser": "^0.4.3",
     "material-ui": "^1.0.0-beta.40",
     "now": "^11.4.1",
